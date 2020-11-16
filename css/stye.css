@@ -1,0 +1,7 @@
+@import url(https://weloveiconfonts.com/api/?family=zocial);
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+  color: red;
+}
+/*# sourceMappingURL=stye.css.map */

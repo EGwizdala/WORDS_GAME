@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,OAAO,CAAC,mDAAI;AAEZ,YAAY;CACZ,AAAA,AAAA,KAAC,EAAO,SAAS,AAAhB,CAAiB,OAAO,CAAC;EACtB,WAAW,EAAE,oBAAoB;EACjC,KAAK,EAAE,GAAG;CAAG",
+    "sources": [
+        "../sass/stye.sass"
+    ],
+    "names": [],
+    "file": "stye.css"
+}
