@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Secular One", sans-serif;
+  font-size: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #22a6b3;
+}
+
+aside .alphabet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+  width: 100px;
+  height: 100vh;
+  color: #f6e58d;
+}
+
+aside .alphabet li {
+  -ms-flex-preferred-size: calc(100vh / 12);
+      flex-basis: calc(100vh / 12);
+  width: 50%;
+  font-family: 'Secular One', sans-serif;
+  text-transform: uppercase;
+  font-size: 4.0rem;
+  text-align: center;
+  line-height: calc(100vh / 12);
+}
+/*# sourceMappingURL=styles.css.map */
