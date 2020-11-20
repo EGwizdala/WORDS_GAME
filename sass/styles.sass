@@ -12,11 +12,14 @@ ul
     padding: 0
     margin: 0
 
+img
+    width: 100%
+
 aside
     position: absolute
     top: 0
-    left: 0
-    background-color: #22a6b3
+    left: -110px
+    background-color: $aside-color
 
     .alphabet
         display: flex
@@ -24,10 +27,10 @@ aside
         flex-flow: column wrap
         align-items: flex-start
         align-content: stretch
-        width: 100px
+        width: $aside-width
         height: 100vh
 
-        color: #f6e58d
+        color: $font-yellow
         li
             flex-basis: calc(100vh / 12)
             width: 50%
@@ -37,5 +40,42 @@ aside
             font-size: 4.0rem
             text-align: center
             line-height: calc(100vh / 12)
-        .arrow
-            
+            font-weight: bolder
+    .arrow
+        position: absolute
+        top: 0px
+        left: $aside-width
+        border-style: solid
+        border-width: 30px 0 30px 25px
+        border-color: transparent transparent transparent $aside-color
+
+main
+    display: flex
+    justify-content: center
+    flex-flow: row no-wrap
+    align-items: center
+    width: 100%
+    min-width: 1220px
+    height: 100vh
+    min-height: 800px
+    section
+        flex-basis: 30%
+        height: 100%
+    .score
+        display: flex
+        flex-flow: column wrap
+        justify-content: center
+        align-items: center
+        height: 100%
+        ul
+            display: flex
+            flex-flow: row wrap
+            justify-content: center
+            align-items: stretch
+            width: 50%
+            height: 20%
+            li
+                flex-basis: 30%
+                text-align: center
+                i
+                    font-size: 5em
