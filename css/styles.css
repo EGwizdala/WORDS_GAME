@@ -49,11 +49,11 @@ aside .alphabet li {
       flex-basis: calc(100vh / 12);
   width: 50%;
   font-family: 'Secular One', sans-serif;
+  font-size: 4em;
   text-transform: uppercase;
-  font-size: 4.0rem;
+  font-weight: bolder;
   text-align: center;
   line-height: calc(100vh / 12);
-  font-weight: bolder;
 }
 
 aside .arrow {
@@ -202,6 +202,15 @@ main .board .mainImg {
       -ms-flex-positive: 1;
           flex-grow: 1;
   height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main .board .mainImg img {
@@ -210,7 +219,7 @@ main .board .mainImg img {
 
 main .board .solution, main .board .letters {
   width: 100%;
-  height: 100px;
+  height: 130px;
 }
 
 main .board .solution ul, main .board .letters ul {
@@ -229,8 +238,72 @@ main .board .solution ul, main .board .letters ul {
           align-items: stretch;
 }
 
+main .board .solution ul li {
+  background-color: #BADC58;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  margin: 0 10px;
+  color: #EB4D4B;
+  border: 3px solid #6AB04C;
+  font-size: 5.5em;
+  text-transform: uppercase;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 90px;
+}
+
+main .board .letters ul li {
+  background-color: #EBEBEB;
+  height: 80px;
+  width: 80px;
+  border-radius: 30%;
+  border: none;
+  margin: 0 20px;
+  -webkit-box-shadow: 5px 5px 0px 1px #95AFC0;
+          box-shadow: 5px 5px 0px 1px #95AFC0;
+  color: rgba(10, 60, 150, 0.8);
+  text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
+  font-size: 5em;
+  text-transform: uppercase;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 80px;
+}
+
+main .board .letters ul li:last-child {
+  background-color: #95AFC0;
+  color: rgba(235, 235, 235, 0.8);
+  -webkit-box-shadow: 5px 5px 0px 1px #3A336B;
+          box-shadow: 5px 5px 0px 1px #3A336B;
+  text-shadow: 2px 2px 2px #95AFC0, 0 0 0 #000, 2px 2px 2px #95AFC0;
+}
+
 main .board div:last-child {
   height: 80px;
   text-align: center;
+  font-size: 3em;
+  height: 80px;
+  width: 100%;
+  text-align: center;
+  color: #f6e58d;
+  line-height: 80px;
+  font-style: 'PT Sans', sans-serif;
+}
+
+main .navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 /*# sourceMappingURL=styles.css.map */
