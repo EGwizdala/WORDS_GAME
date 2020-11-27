@@ -1,3 +1,113 @@
+@-webkit-keyframes rotate-sacle-sun {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+            transform: rotate(0deg) scale(1);
+  }
+  25% {
+    -webkit-transform: rotate(90deg) scale(1.2);
+            transform: rotate(90deg) scale(1.2);
+  }
+  50% {
+    -webkit-transform: rotate(180deg) scale(1);
+            transform: rotate(180deg) scale(1);
+  }
+  75% {
+    -webkit-transform: rotate(270deg) scale(1.2);
+            transform: rotate(270deg) scale(1.2);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+            transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes rotate-sacle-sun {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+            transform: rotate(0deg) scale(1);
+  }
+  25% {
+    -webkit-transform: rotate(90deg) scale(1.2);
+            transform: rotate(90deg) scale(1.2);
+  }
+  50% {
+    -webkit-transform: rotate(180deg) scale(1);
+            transform: rotate(180deg) scale(1);
+  }
+  75% {
+    -webkit-transform: rotate(270deg) scale(1.2);
+            transform: rotate(270deg) scale(1.2);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+            transform: rotate(360deg) scale(1);
+  }
+}
+
+@-webkit-keyframes rotate-sun {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-sun {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes up-down-sun {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes up-down-sun {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.showAside {
+  left: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,6 +132,10 @@ aside {
   top: 0;
   left: -110px;
   background-color: #22a6b3;
+  height: 100%;
+  min-height: 800px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 aside .alphabet {
@@ -40,13 +154,14 @@ aside .alphabet {
   -ms-flex-line-pack: stretch;
       align-content: stretch;
   width: 110px;
-  height: 100vh;
+  height: 100%;
+  padding: 0 5px;
   color: #f6e58d;
 }
 
 aside .alphabet li {
-  -ms-flex-preferred-size: calc(100vh / 12);
-      flex-basis: calc(100vh / 12);
+  -ms-flex-preferred-size: 8%;
+      flex-basis: 8%;
   width: 50%;
   font-family: 'Secular One', sans-serif;
   font-size: 4em;
@@ -58,11 +173,26 @@ aside .alphabet li {
 
 aside .arrow {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 110px;
+  width: 40px;
+  height: 50px;
+  background-color: #22a6b3;
   border-style: solid;
-  border-width: 30px 0 30px 25px;
+  border-width: 2px 0 2px 2px;
   border-color: transparent transparent transparent #22a6b3;
+}
+
+aside .arrow i {
+  color: #f6e58d;
+  font-size: 4em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+  transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
 }
 
 main {
@@ -126,12 +256,12 @@ main .score ul {
           align-items: stretch;
   width: 40%;
   height: 120px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 main .score ul li {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
+  -ms-flex-preferred-size: 60px;
+      flex-basis: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -149,6 +279,7 @@ main .score ul li i {
 }
 
 main .score div:nth-of-type(1) {
+  margin-top: 20px;
   font-size: 3em;
   height: 80px;
   width: 100%;
@@ -177,6 +308,8 @@ main .score .medal {
 
 main .score .medal img {
   width: 70%;
+  min-width: 280px;
+  max-width: 350px;
 }
 
 main .board {
@@ -305,5 +438,80 @@ main .navigation {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+}
+
+main .navigation div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  height: 10%;
+}
+
+main .navigation div p {
+  font-size: 3em;
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+  max-width: 300px;
+  font-size: 3em;
+  height: 80px;
+  width: 100%;
+  text-align: center;
+  color: #f6e58d;
+  line-height: 80px;
+  font-style: 'PT Sans', sans-serif;
+}
+
+main .navigation div .button {
+  height: 60px;
+  width: 60px;
+  background-color: #EBEBEB;
+  border-radius: 50%;
+  border: none;
+  -webkit-box-shadow: 5px 5px 0px 1px #95AFC0;
+          box-shadow: 5px 5px 0px 1px #95AFC0;
+  color: rgba(224, 86, 253, 0.8);
+  text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
+  font-size: 4em;
+  text-transform: uppercase;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 60px;
+}
+
+main .navigation .sun {
+  height: 30%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  position: relative;
+}
+
+main .navigation .sun img {
+  margin-top: 30px;
+  width: 80%;
+  max-width: 300px;
+  position: absolute;
+}
+
+main .navigation .sun img:nth-of-type(2) {
+  -webkit-animation: rotate-sun 20s linear infinite;
+          animation: rotate-sun 20s linear infinite;
+}
+
+main .navigation .sun img:nth-of-type(4) {
+  -webkit-animation: up-down-sun 5s linear infinite;
+          animation: up-down-sun 5s linear infinite;
+}
+
+main .navigation .sun img:first-child {
+  -webkit-animation: rotate-sacle-sun 20s linear infinite;
+          animation: rotate-sacle-sun 20s linear infinite;
 }
 /*# sourceMappingURL=styles.css.map */

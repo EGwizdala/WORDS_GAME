@@ -1,5 +1,7 @@
 @import _var
 @import _mixin
+@import _keyframes
+@import _jsClass
 
 *
     margin: 0
@@ -21,7 +23,9 @@ aside
     top: 0
     left: -110px
     background-color: $aside-color
-
+    height: 100%
+    min-height: $min-height
+    transition: 0.5s ease
     .alphabet
         display: flex
         justify-content: space-around
@@ -29,29 +33,40 @@ aside
         align-items: flex-start
         align-content: stretch
         width: $aside-width
-        height: 100vh
-
+        height: 100%
+        padding: 0 5px
         color: $font-color
         li
-            flex-basis: calc(100vh / 12)
+            flex-basis: 8%
             width: 50%
             font-family: 'Secular One', sans-serif
             +font-upperCase (4em, calc(100vh / 12) )
 
     .arrow
         position: absolute
-        top: 0px
+        top: 0
         left: $aside-width
+        width: 40px
+        height: 50px
+        background-color: $aside-color
         border-style: solid
-        border-width: 30px 0 30px 25px
+        border-width: 2px 0 2px 2px
         border-color: transparent transparent transparent $aside-color
+        i
+            color: $font-color
+            font-size: 4em
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            transition: all 0.5s cubic-bezier(.25,1.7,.35,.8)
 
 main
     flex-flow: row no-wrap
     width: 100%
     min-width: 1220px
     height: 100vh
-    min-height: 800px
+    min-height: $min-height
     +center-flex
 
     section
@@ -70,15 +85,16 @@ main
             align-items: stretch
             width: 40%
             height: 120px
-            margin-top: 20px
+            margin-top: 40px
             li
-                flex-basis: 30%
+                flex-basis: 60px
                 +center-flex
 
                 i
                     font-size: 4em
                     color: $gray-color
         div:nth-of-type(1)
+            margin-top: 20px
             +text-style
         .medal
             width: 100%
@@ -89,6 +105,8 @@ main
             align-items: flex-start
             img
                 width: 70%
+                min-width: 280px
+                max-width: 350px
     .board
         flex-basis: 40%
         display: flex
@@ -146,3 +164,42 @@ main
         flex-flow: column wrap
         justify-content: center
         align-items: stretch
+        div
+            display: flex
+            justify-content: center
+            align-items: flex-start
+            width: 100%
+            height: 10%
+            p
+                font-size: 3em
+                flex-basis: 70%
+                max-width: 300px
+                +text-style
+            .button
+                height: 60px
+                width: 60px
+                background-color: $btn-color
+                border-radius: 50%
+                border: none
+                box-shadow: 5px 5px 0px 1px $btn-shadow-color
+                color: rgba(224,86,253, 0.8)
+                text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def
+                +font-upperCase (4em, 60px )
+        .sun
+            height: 30%
+            flex-grow: 1
+            position: relative
+            img
+                margin-top: 30px
+                width: 80%
+                max-width: 300px
+                position: absolute
+                // top: 20%
+                // left: 50%
+                // transform: translate(-50%, -50%)
+                &:nth-of-type(2)
+                    animation: rotate-sun 20s linear infinite
+                &:nth-of-type(4)
+                    animation: up-down-sun 5s linear infinite
+                &:first-child
+                    animation: rotate-sacle-sun 20s linear infinite
