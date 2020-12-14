@@ -27,23 +27,36 @@ const aside = new Aside()
 
 class ChangeImage {
     constructor() {
-        this.imgList = ["arbuz"," banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "koza", "lis", "małpa", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ul", "wilk", "zebra" ];
+        
 
         // this.imgSrc = `../img/words/${imgName}.svg`;
         this.letters = [...document.querySelectorAll(".alphabet li")];
         this.mainImg = document.querySelector(".mainImg img");
         
        this.letters.forEach(item => {
-          item.addEventListener("click", function ()  {
-                console.log(this.innerText);
-                return this.innerText
-
-            })
+          item.addEventListener("click", this.clickFunction)
         })
 
+    }
 
-       
+    clickFunction() {
+        console.log(this.innerText);
+        let alphabetLetter = this.innerText;
+        let firstLetter;
+        const words = ["arbuz"," banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ul", "wilk", "zebra" ];
 
+        words.forEach(item => {
+            firstLetter = item.charAt(0);
+            console.log(firstLetter.toUpperCase(), alphabetLetter)
+            if(firstLetter.toUpperCase() === alphabetLetter){
+                console.log("ta sama litera");
+                let newImg = item;
+                console.log(newImg)
+                const imgSrc = `../img/words/${newImg}.svg`;
+                document.querySelector(".mainImg img").src = imgSrc;
+
+            }
+       })
         
     }
    
@@ -51,18 +64,21 @@ class ChangeImage {
     //     this.mainImg.src = this.imgSrc;
     //     console.log("klik");
     // }
-   checkLetter() {
-       this.imgList.forEach(item => {
-           item.charAt(0)
+   checkLetter(innerText) {
+    let firstLetter 
+       this.words.forEach(item => {
+         firstLetter = item.charAt(0);
+         if(firstLetter === innerText){
+            console.log("ta sama litera")
+         }
        })
 
-      
     }
   
 
-    getLetters(letters, element) {
-        if(firstLetter = innerTex){
-           
+    getLetters(firstLetter, innerText) {
+        if(firstLetter === innerText){
+           console.log("ta sama litera")
         }
         
     }
