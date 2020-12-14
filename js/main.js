@@ -7,7 +7,6 @@ class Toggle {
     }
 
     toggleVar() {
-        console.log(this.elements)
         for(let i = 0; i < this.elements.length; i++ ){
             this.elements[i].classList.toggle(this.className[i])
         }
@@ -26,9 +25,47 @@ class Aside {
 const aside = new Aside()
 
 
-// class ChangeImage {
-//     this.imgs = 
-// }
+class ChangeImage {
+    constructor() {
+        this.imgList = ["arbuz"," banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "koza", "lis", "małpa", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ul", "wilk", "zebra" ];
 
-var fs = require('fs');
-var files = fs.readdirSync('/assets/photos/');
+        // this.imgSrc = `../img/words/${imgName}.svg`;
+        this.letters = [...document.querySelectorAll(".alphabet li")];
+        this.mainImg = document.querySelector(".mainImg img");
+        
+       this.letters.forEach(item => {
+          item.addEventListener("click", function ()  {
+                console.log(this.innerText);
+                return this.innerText
+
+            })
+        })
+
+
+       
+
+        
+    }
+   
+    // pushImg() {
+    //     this.mainImg.src = this.imgSrc;
+    //     console.log("klik");
+    // }
+   checkLetter() {
+       this.imgList.forEach(item => {
+           item.charAt(0)
+       })
+
+      
+    }
+  
+
+    getLetters(letters, element) {
+        if(firstLetter = innerTex){
+           
+        }
+        
+    }
+}
+
+const changeImg = new ChangeImage()
