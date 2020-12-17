@@ -24,12 +24,18 @@ class Aside {
 
 const aside = new Aside()
 
+class WordsList {
+    static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "x-rays", "yeti", "wilk", "ząb" ];
+}
+
 
 class ChangeImage {
-    constructor() {
-        
+    
 
-        // this.imgSrc = `../img/words/${imgName}.svg`;
+
+    constructor() {
+       
+        
         this.letters = [...document.querySelectorAll(".alphabet li")];
         this.mainImg = document.querySelector(".mainImg img");
         
@@ -39,49 +45,29 @@ class ChangeImage {
 
     }
 
+ 
+
+
     clickFunction() {
-        console.log(this.innerText);
+        console.log(this);
+
         let alphabetLetter = this.innerText;
         let firstLetter;
-        const words = ["arbuz"," banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ul", "wilk", "zebra" ];
-
-        words.forEach(item => {
+        this.words = WordsList.words
+       console.log(this.words);
+        this.words.forEach(item => {
             firstLetter = item.charAt(0);
             console.log(firstLetter.toUpperCase(), alphabetLetter)
             if(firstLetter.toUpperCase() === alphabetLetter){
                 console.log("ta sama litera");
                 let newImg = item;
-                console.log(newImg)
                 const imgSrc = `../img/words/${newImg}.svg`;
                 document.querySelector(".mainImg img").src = imgSrc;
-
             }
        })
-        
+       
     }
-   
-    // pushImg() {
-    //     this.mainImg.src = this.imgSrc;
-    //     console.log("klik");
-    // }
-   checkLetter(innerText) {
-    let firstLetter 
-       this.words.forEach(item => {
-         firstLetter = item.charAt(0);
-         if(firstLetter === innerText){
-            console.log("ta sama litera")
-         }
-       })
 
-    }
-  
-
-    getLetters(firstLetter, innerText) {
-        if(firstLetter === innerText){
-           console.log("ta sama litera")
-        }
-        
-    }
 }
 
 const changeImg = new ChangeImage()
