@@ -30,27 +30,18 @@ class WordsList {
 
 
 class ChangeImage {
-    
-
-
     constructor() {
-       
-        
         this.letters = [...document.querySelectorAll(".alphabet li")];
         this.mainImg = document.querySelector(".mainImg img");
         
-       this.letters.forEach(item => {
+        this.letters.forEach(item => {
           item.addEventListener("click", this.clickFunction)
         })
-
     }
-
- 
-
-
     clickFunction() {
+        this.wordsBuilder = new WordsBuilder();
+        this.wordsBuilder.resetUl();
         console.log(this);
-
         let alphabetLetter = this.innerText;
         let firstLetter;
         this.words = WordsList.words
@@ -63,11 +54,58 @@ class ChangeImage {
                 let newImg = item;
                 const imgSrc = `../img/words/${newImg}.svg`;
                 document.querySelector(".mainImg img").src = imgSrc;
+               
+
+                const word = this.wordsBuilder.getLetter(newImg);
+
+
             }
        })
-       
     }
-
 }
 
-const changeImg = new ChangeImage()
+const changeImg = new ChangeImage();
+
+class WordsBuilder {
+    constructor() {
+        this.words = WordsList.words;
+        this.lettersUl = document.querySelector(".letters ul");
+    }
+
+    resetUl() {
+       while(this.lettersUl.firstChild){
+           this.lettersUl.removeChild(this.lettersUl.firstChild)
+       }
+    }
+    
+    createLetters(letter) {
+       this.newLi = document.createElement("li");
+       this.newLi.innerText = letter
+       this.lettersUl.appendChild(this.newLi)
+    }
+
+    getLetter(word) {
+        this.wordLenght = word.length;
+    
+        for (let i = 0; i < this.wordLenght; i++) {
+            this.letter = word.slice(i, i+1)
+            console.log(this.letter);
+            this.createLetters(this.letter)
+        }
+    }
+}
+
+const newWord = new WordsBuilder()
+
+class Random {
+    constructor () {
+        this.alphabet = "aąbcćdeęfghijklłmnńoóprsśtuwyzźż";
+
+    }
+
+    drawLetter(){
+        
+    }
+
+    
+}

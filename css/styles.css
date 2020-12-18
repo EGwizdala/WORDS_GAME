@@ -429,6 +429,7 @@ main .board .letters ul li {
           box-shadow: 5px 5px 0px 1px #95AFC0;
   color: rgba(10, 60, 150, 0.8);
   text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
+  cursor: pointer;
   font-size: 5em;
   text-transform: uppercase;
   font-weight: bolder;
@@ -436,12 +437,18 @@ main .board .letters ul li {
   line-height: 80px;
 }
 
-main .board .letters ul li:last-child {
+main .board .letters ul li:hover {
   background-color: #95AFC0;
   color: rgba(235, 235, 235, 0.8);
   -webkit-box-shadow: 5px 5px 0px 1px #3A336B;
           box-shadow: 5px 5px 0px 1px #3A336B;
   text-shadow: 2px 2px 2px #95AFC0, 0 0 0 #000, 2px 2px 2px #95AFC0;
+}
+
+main .board .letters ul li:active {
+  -webkit-box-shadow: 0px 0px 0px 0px #3A336B;
+          box-shadow: 0px 0px 0px 0px #3A336B;
+  text-shadow: 0.5px 0.5px 0.5px #95AFC0, 0 0 0 #000, 0.5px 0.5px 0.5px #95AFC0;
 }
 
 main .board div:last-child {
