@@ -41,24 +41,19 @@ class ChangeImage {
     clickFunction() {
         this.wordsBuilder = new WordsBuilder();
         this.wordsBuilder.resetUl();
-        console.log(this);
+      
         let alphabetLetter = this.innerText;
         let firstLetter;
         this.words = WordsList.words
-       console.log(this.words);
-        this.words.forEach(item => {
-            firstLetter = item.charAt(0);
-            console.log(firstLetter.toUpperCase(), alphabetLetter)
+    //    console.log(this.words);
+        this.words.forEach(word => {
+            firstLetter = word.charAt(0);
+            // console.log(firstLetter.toUpperCase(), alphabetLetter)
             if(firstLetter.toUpperCase() === alphabetLetter){
-                console.log("ta sama litera");
-                let newImg = item;
-                const imgSrc = `../img/words/${newImg}.svg`;
+                const imgSrc = `../img/words/${word}.svg`;
                 document.querySelector(".mainImg img").src = imgSrc;
-               
-
-                const word = this.wordsBuilder.getLetter(newImg);
-
-
+                const mixedword = this.wordsBuilder.mixLetters(word)
+                const newImg = this.wordsBuilder.getLetter( mixedword);
             }
        })
     }
@@ -70,6 +65,7 @@ class WordsBuilder {
     constructor() {
         this.words = WordsList.words;
         this.lettersUl = document.querySelector(".letters ul");
+        // this.mixLetters("kot")
     }
 
     resetUl() {
@@ -80,32 +76,124 @@ class WordsBuilder {
     
     createLetters(letter) {
        this.newLi = document.createElement("li");
-       this.newLi.innerText = letter
-       this.lettersUl.appendChild(this.newLi)
+       this.newLi.innerText = letter;
+       this.lettersUl.appendChild(this.newLi);
+
+    }
+
+    mixLetters(word) {
+        this.wordArr = Array.from(word);
+        this.randomOne = new RandomLetter;
+        this.firstRdmLet = this.randomOne.letter;
+
+        this.randomTwoe = new RandomLetter;
+        this.secondRdmLet = this.randomTwoe.letter;
+
+        this.wordArr.push(this.firstRdmLet, this.secondRdmLet)
+
+        
+        return this.wordArr
     }
 
     getLetter(word) {
         this.wordLenght = word.length;
-    
         for (let i = 0; i < this.wordLenght; i++) {
-            this.letter = word.slice(i, i+1)
-            console.log(this.letter);
+            this.letter = word.slice(i, i+1);
             this.createLetters(this.letter)
         }
-    }
+    }    
 }
 
 const newWord = new WordsBuilder()
 
-class Random {
+class RandomLetter {
     constructor () {
         this.alphabet = "aąbcćdeęfghijklłmnńoóprsśtuwyzźż";
-
+        this.letter = this.drawLetter(this.alphabet);
+        console.log(this.letter);
     }
 
-    drawLetter(){
-        
+    drawLetter(alphabet){
+        const alphabetArr = alphabet.split("");
+        let i = Math.floor(Math.random() * alphabetArr.length);
+        const letter = alphabetArr[i];
+        return letter
     }
-
-    
 }
+
+const newRandom = new RandomLetter();
+
+
+class Permut {
+    constructor () {
+        this.randomPermut = [];
+        
+        this.permutationArr = this.findPermutations("kosz");
+        this.max = permutationArr.length;
+        
+        this.randomInt = this.getRandomInt(5);
+
+        // console.log(permutationArr, max, randomInt)
+    
+    }
+
+    findPermutations(string) {
+        if (!string || typeof string !== "string"){
+          return "Please enter a string"
+        } else if (string.length < 2 ){
+          return string
+        }
+      
+        let permutationsArray = [] 
+         
+        for (let i = 0; i < string.length; i++){
+          let char = string[i]
+      
+          if (string.indexOf(char) != i)
+          continue
+      
+          let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
+      
+          for (let permutation of findPermutations(remainingChars)){
+            permutationsArray.push(char + permutation) }
+        }
+        
+
+        return permutationsArray
+      }
+    
+    getRandomInt(max) {
+        max = Math.floor(max);
+        return Math.floor(Math.random() * max);
+    }
+
+}
+
+const newPermut = new Permut();
+
+// function findPermutations(string) {
+//     if (!string || typeof string !== "string"){
+//       return "Please enter a string"
+//     } else if (string.length < 2 ){
+//       return string
+//     }
+  
+//     let permutationsArray = [] 
+     
+//     for (let i = 0; i < string.length; i++){
+//       let char = string[i]
+  
+//       if (string.indexOf(char) != i)
+//       continue
+  
+//       let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
+  
+//       for (let permutation of findPermutations(remainingChars)){
+//         permutationsArray.push(char + permutation) }
+//     }
+
+//     const selectedElement = permutationsArray
+//     return permutationsArray
+//   }
+
+ 
