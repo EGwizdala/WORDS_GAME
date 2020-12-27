@@ -125,42 +125,51 @@ const newRandom = new RandomLetter();
 
 
 class Permut {
-    constructor () {
+    constructor() {
         this.randomPermut = [];
         
         this.permutationArr = this.findPermutations("kosz");
-        this.max = permutationArr.length;
+        this.max = this.permutationArr.length;
         
         this.randomInt = this.getRandomInt(5);
 
-        // console.log(permutationArr, max, randomInt)
+        console.log(this.permutationArr, this.max, this.randomInt)
     
     }
 
     findPermutations(string) {
+
+        console.log(string)
+        
         if (!string || typeof string !== "string"){
           return "Please enter a string"
-        } else if (string.length < 2 ){
+        }
+        
+        else if (string.length < 2 ){
           return string
         }
-      
+
         let permutationsArray = [] 
          
         for (let i = 0; i < string.length; i++){
+
           let char = string[i]
+          console.log(char)
       
-          if (string.indexOf(char) != i)
+          if (string.indexOf(char) != i) 
           continue
       
           let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
+          console.log(remainingChars)
       
-          for (let permutation of findPermutations(remainingChars)){
+          for (let permutation of this.findPermutations(remainingChars)){
+            console.log(permutation)
             permutationsArray.push(char + permutation) }
         }
         
-
+ 
         return permutationsArray
-      }
+    }
     
     getRandomInt(max) {
         max = Math.floor(max);
@@ -171,29 +180,29 @@ class Permut {
 
 const newPermut = new Permut();
 
-// function findPermutations(string) {
-//     if (!string || typeof string !== "string"){
-//       return "Please enter a string"
-//     } else if (string.length < 2 ){
-//       return string
-//     }
+function findPermutations(string) {
+    if (!string || typeof string !== "string"){
+      return "Please enter a string"
+    } else if (string.length < 2 ){
+      return string
+    }
   
-//     let permutationsArray = [] 
+    let permutationsArray = [] 
      
-//     for (let i = 0; i < string.length; i++){
-//       let char = string[i]
+    for (let i = 0; i < string.length; i++){
+      let char = string[i]
   
-//       if (string.indexOf(char) != i)
-//       continue
+      if (string.indexOf(char) != i)
+      continue
   
-//       let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
+      let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
   
-//       for (let permutation of findPermutations(remainingChars)){
-//         permutationsArray.push(char + permutation) }
-//     }
+      for (let permutation of findPermutations(remainingChars)){
+        permutationsArray.push(char + permutation) }
+    }
 
-//     const selectedElement = permutationsArray
-//     return permutationsArray
-//   }
+    const selectedElement = permutationsArray
+    return permutationsArray
+  }
 
  
