@@ -28,29 +28,25 @@ class WordsList {
     static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "x-rays", "yeti", "wilk", "ząb" ];
 }
 
-
 class ChangeImage {
     constructor() {
         this.letters = [...document.querySelectorAll(".alphabet li")];
         this.mainImg = document.querySelector(".mainImg img");
-        
         this.letters.forEach(item => {
           item.addEventListener("click", this.clickFunction)
         })
     }
     clickFunction() {
         this.wordsBuilder = new WordsBuilder();
-        this.wordsBuilder.resetUl();
+        this.lettersUl = this.wordsBuilder.lettersUl;
+        this.solutionUl = this.wordsBuilder.solutionUl;
 
+        this.wordsBuilder.resetUl(this.lettersUl);  
+        this.wordsBuilder.resetUl(this.solutionUl);  
 
-      
         let alphabetLetter = this.innerText;
         let firstLetter;
-        this.words = WordsList.words
-
-        
-
-    //    console.log(this.words);
+        this.words = WordsList.words;
         this.words.forEach(word => {
             firstLetter = word.charAt(0);
             // console.log(firstLetter.toUpperCase(), alphabetLetter)
@@ -58,62 +54,76 @@ class ChangeImage {
                 const imgSrc = `../img/words/${word}.svg`;
                 document.querySelector(".mainImg img").src = imgSrc;
                 const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
-                console.log(wordRandomLetters);
                 const newPermut= new Permut(wordRandomLetters);
-                console.log(newPermut);
-
                 const mixedWord = newPermut.mixedword;
-                const newImg = this.wordsBuilder.getLetter( mixedWord);
+                const newImg = this.wordsBuilder.getLetter( mixedWord, this.lettersUl);
+                const newInput = this.wordsBuilder.getInput(word, this.solutionUl);
             }
        })
+
+       const liElem = this.lettersUl.querySelectorAll("li");
+       liElem.forEach(element =>  console.log(element.innerText))
     }
 }
 
 const changeImg = new ChangeImage();
-
 class WordsBuilder {
     constructor() {
         this.words = WordsList.words;
         this.lettersUl = document.querySelector(".letters ul");
+        this.solutionUl = document.querySelector(".solution ul");
     }
 
-    resetUl() {
-       while(this.lettersUl.firstChild){
-           this.lettersUl.removeChild(this.lettersUl.firstChild)
+    resetUl(ul) {
+       while(ul.firstChild){
+           ul.removeChild(ul.firstChild)
        }
     }
     
-    createLetters(letter) {
+    createLetters(letter, ul) {
        this.newLi = document.createElement("li");
        this.newLi.innerText = letter;
-       this.lettersUl.appendChild(this.newLi);
-
+       ul.appendChild(this.newLi);
     }
+
+    createInput(letter, ul, nbr) {
+        this.newLi = document.createElement("li");
+        this.newLi.innerText = "";
+        this.newLi.setAttribute("data-letter", letter);
+        this.newLi.setAttribute("data-nbr", nbr);
+        ul.appendChild(this.newLi);
+     }
 
     mixLetters(word) {
         this.wordArr = Array.from(word);
         this.randomOne = new RandomLetter;
         this.firstRdmLet = this.randomOne.letter;
-
         this.randomTwoe = new RandomLetter;
         this.secondRdmLet = this.randomTwoe.letter;
-
         this.wordArr.push(this.firstRdmLet, this.secondRdmLet)
-        
-        
         return this.wordArr
     }
 
-    getLetter(word) {
+    getLetter(word, ul) {
         this.wordLenght = word.length;
         for (let i = 0; i < this.wordLenght; i++) {
-            this.letter = word.slice(i, i+1);
-            this.createLetters(this.letter)
+            let letter = word.slice(i, i+1);
+            this.createLetters(letter, ul);
         }
-    }    
+    }
+    
+    getInput(word, ul) {
+        this.wordLenght = word.length;
+        for (let i = 0; i < this.wordLenght; i++) {
+            let letter = word.slice(i, i+1);
+            let nbr = i;
+            nbr++;
+            this.createInput(letter, ul, nbr);    
+        }
+    }   
 }
 
-const newWord = new WordsBuilder()
+// const newWord = new WordsBuilder()
 
 class RandomLetter {
     constructor () {
@@ -129,79 +139,50 @@ class RandomLetter {
     }
 }
 
-const newRandom = new RandomLetter();
-
-
+// const newRandom = new RandomLetter();
 class Permut {
     constructor(word) {
         this.permutationArr = this.findPermutations(word);
         let max = this.permutationArr.length;
         let randomInt = this.getRandomInt(max);
-
-        this.mixedword = this.permutationArr[randomInt]
-        console.log(this.mixedword)
-    
+        this.mixedword = this.permutationArr[randomInt];  
     }
 
     findPermutations(string) {
-   
         if (!string || typeof string !== "string"){
           return "Please enter a string"
         }
-        
         else if (string.length < 2 ){
           return string
         }
-
         let permutationsArray = [] 
-         
         for (let i = 0; i < string.length; i++){
           let char = string[i]
           if (string.indexOf(char) != i) 
           continue
-      
           let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length);
-        
           for (let permutation of this.findPermutations(remainingChars)){
             permutationsArray.push(char + permutation) }
         }
-        
- 
         return permutationsArray
     }
-    
     getRandomInt(max) {
         max = Math.floor(max);
         return Math.floor(Math.random() * max);
     }
-
 }
 
-// const newPermut = new Permut("kotek");
+class GetSolution {
+    constructor() {
+      
+    }
 
-// function findPermutations(string) {
-//     if (!string || typeof string !== "string"){
-//       return "Please enter a string"
-//     } else if (string.length < 2 ){
-//       return string
-//     }
-  
-//     let permutationsArray = [] 
-     
-//     for (let i = 0; i < string.length; i++){
-//       let char = string[i]
-  
-//       if (string.indexOf(char) != i)
-//       continue
-  
-//       let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
-  
-//       for (let permutation of findPermutations(remainingChars)){
-//         permutationsArray.push(char + permutation) }
-//     }
+    getNextElement()
 
-//     const selectedElement = permutationsArray
-//     return permutationsArray
-//   }
+    checkletters(wordLetter, solutionLetter ) {
+        if (wordLetter === solutionLetter) {
 
+        }
+    }
+}
  
