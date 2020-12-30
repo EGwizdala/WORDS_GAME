@@ -32,11 +32,13 @@ class ChangeImage {
     constructor() {
         this.letters = [...document.querySelectorAll(".alphabet li")];
         this.mainImg = document.querySelector(".mainImg img");
-        this.letters.forEach(item => {
-          item.addEventListener("click", this.clickFunction)
+        this.letters.forEach(letter => {
+         letter.addEventListener("click", this.clickFunction)
         })
+      
     }
     clickFunction() {
+      
         this.wordsBuilder = new WordsBuilder();
         this.lettersUl = this.wordsBuilder.lettersUl;
         this.solutionUl = this.wordsBuilder.solutionUl;
@@ -47,7 +49,8 @@ class ChangeImage {
         let alphabetLetter = this.innerText;
         let firstLetter;
         this.words = WordsList.words;
-        this.words.forEach(word => {
+        for (let i = 0; i < this.words.length; i++)  {
+            let word = this.words[i]
             firstLetter = word.charAt(0);
             // console.log(firstLetter.toUpperCase(), alphabetLetter)
             if(firstLetter.toUpperCase() === alphabetLetter){
@@ -58,12 +61,40 @@ class ChangeImage {
                 const mixedWord = newPermut.mixedword;
                 const newImg = this.wordsBuilder.getLetter( mixedWord, this.lettersUl);
                 const newInput = this.wordsBuilder.getInput(word, this.solutionUl);
-            }
-       })
 
-       const liElem = this.lettersUl.querySelectorAll("li");
-       liElem.forEach(element =>  console.log(element.innerText))
+
+                this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
+
+                console.log(this.letterBtns)
+
+                for (let i = 0; i < this.letterBtns.length; i++) {
+                    this.letterBtns[i].addEventListener("click", () => {
+                        console.log(this.letterBtns[i]);
+                        this.letterBtns[i].innerText;
+
+                        const newSolution = new GetSolution();
+                        newSolution.checkletters();
+
+                       })
+                }
+
+
+                // this.letterBtns.forEach(button => {
+                //  button.addEventListener("click", () => {
+                //      console.log(this.innerText)
+                //      this.innerText
+                    
+                //     }
+                //  )})
+            }
+       }
+
+      
+
+    //    const liElem = this.lettersUl.querySelectorAll("li");
+    //    liElem.forEach(element =>  console.log(element.innerText))
     }
+ 
 }
 
 const changeImg = new ChangeImage();
@@ -174,15 +205,29 @@ class Permut {
 
 class GetSolution {
     constructor() {
-      
+      this.wordsBuilder = new WordsBuilder();  
+
+      this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
+      this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
+      console.log(this.buttons)
+
+      this.letterBtns.forEach(button => {
+        button.addEventListener("click", this.checkletters.bind(this))
+    })
     }
 
-    getNextElement()
+    
 
-    checkletters(wordLetter, solutionLetter ) {
-        if (wordLetter === solutionLetter) {
+    getNextElement() {
+console.log("element")
+    }
 
-        }
+    checkletters() {
+        console.log("klik")
+        // this.wordLetter = this.innerText;
+        // console.log(this.wordLetter)
+       
     }
 }
- 
+
+const newSolution = new GetSolution()
