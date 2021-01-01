@@ -65,34 +65,20 @@ class ChangeImage {
 
                 this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
 
-                console.log(this.letterBtns)
+                // console.log(this.letterBtns)
 
                 for (let i = 0; i < this.letterBtns.length; i++) {
                     this.letterBtns[i].addEventListener("click", () => {
-                        console.log(this.letterBtns[i]);
+                        // console.log(this.letterBtns[i]);
                         this.letterBtns[i].innerText;
-
+                        console.log(this.solutionUl);
                         const newSolution = new GetSolution();
-                        newSolution.checkletters();
+                        newSolution.checkletters(this.letterBtns[i], this.solutionUl);
 
                        })
                 }
-
-
-                // this.letterBtns.forEach(button => {
-                //  button.addEventListener("click", () => {
-                //      console.log(this.innerText)
-                //      this.innerText
-                    
-                //     }
-                //  )})
             }
        }
-
-      
-
-    //    const liElem = this.lettersUl.querySelectorAll("li");
-    //    liElem.forEach(element =>  console.log(element.innerText))
     }
  
 }
@@ -209,7 +195,7 @@ class GetSolution {
 
       this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
       this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
-      console.log(this.buttons)
+    //   console.log(this.buttons)
 
       this.letterBtns.forEach(button => {
         button.addEventListener("click", this.checkletters.bind(this))
@@ -218,15 +204,34 @@ class GetSolution {
 
     
 
-    getNextElement() {
-console.log("element")
+    getNextElement(solution, buttonLetter) {
+        if (solution.getAttribute("data-letter").toUpperCase === buttonLetter) {
+            solution[1].innerText = buttonLetter
+
+        }
     }
 
-    checkletters() {
-        console.log("klik")
-        // this.wordLetter = this.innerText;
-        // console.log(this.wordLetter)
+    checkletters(button, solution) {
+        const buttonLetter = button.innerText;
+        console.log(buttonLetter);
+        // console.log(solution.querySelector("li"));
+        let nbr = 1;
        
+        const solutionField = solution.querySelector(`li:nth-child(${nbr})`);
+        
+        console.log(solutionField)
+        const solutionLetter = solutionField.getAttribute("data-letter");
+
+        console.log(solutionLetter.toUpperCase());
+        if (solutionLetter.toUpperCase() === buttonLetter) {
+            solutionField.innerText = buttonLetter;
+            console.log("zgadza się");
+            nbr++;
+        }
+        
+        console.log(nbr);
+        console.log(solutionField);
+
     }
 }
 
