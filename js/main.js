@@ -26,6 +26,8 @@ const aside = new Aside()
 
 class WordsList {
     static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "x-rays", "yeti", "wilk", "ząb" ];
+
+
 }
 
 class ChangeImage {
@@ -64,16 +66,33 @@ class ChangeImage {
 
 
                 this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
-
-                // console.log(this.letterBtns)
+                this.nbr = 1;
 
                 for (let i = 0; i < this.letterBtns.length; i++) {
                     this.letterBtns[i].addEventListener("click", () => {
-                        // console.log(this.letterBtns[i]);
-                        this.letterBtns[i].innerText;
-                        console.log(this.solutionUl);
-                        const newSolution = new GetSolution();
-                        newSolution.checkletters(this.letterBtns[i], this.solutionUl);
+                        console.log(this.letterBtns[i]);
+                        
+                        this.button = this.letterBtns[i];
+                        this.solution =  this.solutionUl;
+                     
+                        this.wordsBuilder = new WordsBuilder();  
+                  
+                        this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
+                        this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
+                        
+                        this.solutionField = this.solution.querySelector(`li:nth-child(${this.nbr})`);
+                        const buttonLetter = this.button.innerText;
+                     
+                        const solutionLetter = this.solutionField.getAttribute("data-letter");
+                        if (solutionLetter.toUpperCase() === buttonLetter) {
+                            this.solutionField.innerText = buttonLetter;
+                            this.nbr++;
+                        }
+
+                        console.log(this.solutionField.getAttribute("data-nbr"), this.solutionBtns.length);
+                        if (this.solutionField.getAttribute("data-nbr") == this.solutionBtns.length) {
+                            console.log("brawo")
+                        }
 
                        })
                 }
@@ -189,50 +208,7 @@ class Permut {
     }
 }
 
-class GetSolution {
-    constructor() {
-      this.wordsBuilder = new WordsBuilder();  
 
-      this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
-      this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
-    //   console.log(this.buttons)
 
-      this.letterBtns.forEach(button => {
-        button.addEventListener("click", this.checkletters.bind(this))
-    })
-    }
+// const newSolution = new GetSolution()
 
-    
-
-    getNextElement(solution, buttonLetter) {
-        if (solution.getAttribute("data-letter").toUpperCase === buttonLetter) {
-            solution[1].innerText = buttonLetter
-
-        }
-    }
-
-    checkletters(button, solution) {
-        const buttonLetter = button.innerText;
-        console.log(buttonLetter);
-        // console.log(solution.querySelector("li"));
-        let nbr = 1;
-       
-        const solutionField = solution.querySelector(`li:nth-child(${nbr})`);
-        
-        console.log(solutionField)
-        const solutionLetter = solutionField.getAttribute("data-letter");
-
-        console.log(solutionLetter.toUpperCase());
-        if (solutionLetter.toUpperCase() === buttonLetter) {
-            solutionField.innerText = buttonLetter;
-            console.log("zgadza się");
-            nbr++;
-        }
-        
-        console.log(nbr);
-        console.log(solutionField);
-
-    }
-}
-
-const newSolution = new GetSolution()
