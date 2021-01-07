@@ -113,6 +113,11 @@
           transform: rotateY(180deg);
 }
 
+.animationSunFace {
+  -webkit-animation: up-down-sun 1s linear 2;
+          animation: up-down-sun 1s linear 2;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -541,17 +546,12 @@ main .navigation .sun img {
 }
 
 main .navigation .sun img:nth-of-type(2) {
-  -webkit-animation: rotate-sun 20s linear infinite;
-          animation: rotate-sun 20s linear infinite;
-}
-
-main .navigation .sun img:nth-of-type(4) {
-  -webkit-animation: up-down-sun 5s linear infinite;
-          animation: up-down-sun 5s linear infinite;
+  -webkit-animation: rotate-sun 30s linear infinite;
+          animation: rotate-sun 30s linear infinite;
 }
 
 main .navigation .sun img:first-child {
-  -webkit-animation: rotate-sacle-sun 20s linear infinite;
-          animation: rotate-sacle-sun 20s linear infinite;
+  -webkit-animation: rotate-sacle-sun 30s linear infinite;
+          animation: rotate-sacle-sun 30s linear infinite;
 }
 /*# sourceMappingURL=styles.css.map */

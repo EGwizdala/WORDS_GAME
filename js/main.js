@@ -1,9 +1,7 @@
 class Toggle {
-    toggle() {
-        this.elements.forEach((element) => {
-            console.log(element)
-            element.classList.toggle(this.className)
-        })
+    toggle(element, className) {
+            element.classList.toggle(className)
+        
     }
 
     toggleVar() {
@@ -27,20 +25,40 @@ const aside = new Aside()
 class WordsList {
     static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "x-rays", "yeti", "wilk", "ząb" ];
 
+    
 
 }
 
 class ChangeImage {
+
+    
+
     constructor() {
+        
         this.letters = [...document.querySelectorAll(".alphabet li")];
-        this.mainImg = document.querySelector(".mainImg img");
-        this.letters.forEach(letter => {
-         letter.addEventListener("click", this.clickFunction)
-        })
+        
+        for (let i = 0; i < this.letters.length; i++) {
+            this.letters[i].addEventListener("click", this.clickFunction)
+        }
+
+        
+        // this.letters.forEach(letter => {
+        //  letter.addEventListener("click", this.clickFunction)
+        // })
+        
       
     }
+
+    static pointNumber = 0;
+
+    static pointAdd() {
+        this.pointNumber++
+    }
+   
     clickFunction() {
-      
+        this.pointNumber = 0;
+        this.caption = document.querySelector(".caption");
+        this.caption.innerText = "Wybierz literkę!";
         this.wordsBuilder = new WordsBuilder();
         this.lettersUl = this.wordsBuilder.lettersUl;
         this.solutionUl = this.wordsBuilder.solutionUl;
@@ -51,6 +69,7 @@ class ChangeImage {
         let alphabetLetter = this.innerText;
         let firstLetter;
         this.words = WordsList.words;
+        
         for (let i = 0; i < this.words.length; i++)  {
             let word = this.words[i]
             firstLetter = word.charAt(0);
@@ -67,9 +86,11 @@ class ChangeImage {
 
                 this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
                 this.nbr = 1;
+                
 
                 for (let i = 0; i < this.letterBtns.length; i++) {
                     this.letterBtns[i].addEventListener("click", () => {
+                        ;
                         console.log(this.letterBtns[i]);
                         
                         this.button = this.letterBtns[i];
@@ -87,15 +108,30 @@ class ChangeImage {
                         if (solutionLetter.toUpperCase() === buttonLetter) {
                             this.solutionField.innerText = buttonLetter;
                             this.nbr++;
+                            const newsun = new UpDownSun;
+                            newsun.updown()
                         }
-
-                        console.log(this.solutionField.getAttribute("data-nbr"), this.solutionBtns.length);
+                       
                         if (this.solutionField.getAttribute("data-nbr") == this.solutionBtns.length) {
-                            console.log("brawo")
+                            this.caption.innerText = "Brawo! Wyraz gotowy!";
+                            
+                            //dodawanie punktów
+                            this.hearts = document.querySelectorAll(".heart li i");
+                            this.medal = document.querySelector(".medal");
+                            this.hearts[this.pointNumber].style.color = "#EB4D4B";
+                            this.pointNumber++
+                            console.log(this.pointNumber);
+                            return this.pointNumber;
+                         
+                            console.log(this.pointNumber)
+                            
+
+                            
                         }
 
                        })
                 }
+                console.log(this.pointNumber)
             }
        }
     }
@@ -159,7 +195,6 @@ class WordsBuilder {
     }   
 }
 
-// const newWord = new WordsBuilder()
 
 class RandomLetter {
     constructor () {
@@ -175,7 +210,6 @@ class RandomLetter {
     }
 }
 
-// const newRandom = new RandomLetter();
 class Permut {
     constructor(word) {
         this.permutationArr = this.findPermutations(word);
@@ -208,7 +242,36 @@ class Permut {
     }
 }
 
+class Points {
+    constructor() {
+        this.hearts = document.querySelectorAll(".heart li i");
+        this.medal = document.querySelector(".medal");
+        this.pointsNumber = 0;
+    }
+
+    addPoint() {
+        console.log(this.pointsNumber)
+        this.hearts[this.pointsNumber].style.color = "#EB4D4B";
+      this.pointsNumber++
+    }
+
+}
+
+const points = new Points
 
 
-// const newSolution = new GetSolution()
+class UpDownSun {
+    updown() {
+        const sunFace = document.querySelector(".sun img:last-child");
+       
+        sunFace.classList.add("animationSunFace" );
+
+        setTimeout(function() {
+            sunFace.classList.remove("animationSunFace" );
+        }, 2000)
+       
+    }
+
+
+}
 
