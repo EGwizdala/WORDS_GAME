@@ -1,3 +1,8 @@
+let pointNumber = 0;
+
+
+
+
 class Toggle {
     toggle(element, className) {
             element.classList.toggle(className)
@@ -22,12 +27,14 @@ class Aside {
 
 const aside = new Aside()
 
-class WordsList {
+class StaticClass {
     static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "x-rays", "yeti", "wilk", "ząb" ];
 
-    
+    static medal =  document.querySelector(".medal img");
 
+    static mainImg =  document.querySelector(".mainImg img");
 }
+
 
 class ChangeImage {
 
@@ -49,14 +56,10 @@ class ChangeImage {
       
     }
 
-    static pointNumber = 0;
-
-    static pointAdd() {
-        this.pointNumber++
-    }
    
     clickFunction() {
-        this.pointNumber = 0;
+        console.log(this)
+        // this.pointNumber = 0;
         this.caption = document.querySelector(".caption");
         this.caption.innerText = "Wybierz literkę!";
         this.wordsBuilder = new WordsBuilder();
@@ -68,15 +71,15 @@ class ChangeImage {
 
         let alphabetLetter = this.innerText;
         let firstLetter;
-        this.words = WordsList.words;
+        this.words = StaticClass.words;
         
         for (let i = 0; i < this.words.length; i++)  {
             let word = this.words[i]
             firstLetter = word.charAt(0);
             // console.log(firstLetter.toUpperCase(), alphabetLetter)
             if(firstLetter.toUpperCase() === alphabetLetter){
-                const imgSrc = `../img/words/${word}.svg`;
-                document.querySelector(".mainImg img").src = imgSrc;
+               
+                StaticClass.mainImg.src = `../img/words/${word}.svg`;
                 const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
                 const newPermut= new Permut(wordRandomLetters);
                 const mixedWord = newPermut.mixedword;
@@ -90,10 +93,13 @@ class ChangeImage {
 
                 for (let i = 0; i < this.letterBtns.length; i++) {
                     this.letterBtns[i].addEventListener("click", () => {
-                        ;
-                        console.log(this.letterBtns[i]);
-                        
+                        console.log(this);
+                       
+                                        
                         this.button = this.letterBtns[i];
+                        // this.button.classList.add("buttonActive");
+                       
+
                         this.solution =  this.solutionUl;
                      
                         this.wordsBuilder = new WordsBuilder();  
@@ -106,32 +112,38 @@ class ChangeImage {
                      
                         const solutionLetter = this.solutionField.getAttribute("data-letter");
                         if (solutionLetter.toUpperCase() === buttonLetter) {
+                            this.button.style.backgroundColor = "#95AFC0";
+                            this.button.style.color = "rgba(235,235,235, 0.8)";
+                            this.button.style.boxShadow = "0px 0px 0px 0px #3A336B";
+                            this.button.style.textShadow = "0.5px 0.5px 0.5px #95AFC0, 0 0 0 #000, 0.5px 0.5px 0.5px #95AFC0";
+
                             this.solutionField.innerText = buttonLetter;
                             this.nbr++;
                             const newsun = new UpDownSun;
-                            newsun.updown()
+                            newsun.updown();
                         }
                        
                         if (this.solutionField.getAttribute("data-nbr") == this.solutionBtns.length) {
+                            
+
                             this.caption.innerText = "Brawo! Wyraz gotowy!";
                             
                             //dodawanie punktów
                             this.hearts = document.querySelectorAll(".heart li i");
                             this.medal = document.querySelector(".medal");
-                            this.hearts[this.pointNumber].style.color = "#EB4D4B";
-                            this.pointNumber++
-                            console.log(this.pointNumber);
-                            return this.pointNumber;
-                         
-                            console.log(this.pointNumber)
-                            
+                            this.hearts[pointNumber].style.color = "#EB4D4B";
+                            pointNumber++                            
+                        }
 
-                            
+                        if(pointNumber === 6) {
+                           const medal = StaticClass.medal;
+
+                           medal.src = "img/score/sky.jpg"
                         }
 
                        })
                 }
-                console.log(this.pointNumber)
+           
             }
        }
     }
@@ -141,7 +153,7 @@ class ChangeImage {
 const changeImg = new ChangeImage();
 class WordsBuilder {
     constructor() {
-        this.words = WordsList.words;
+        this.words = StaticClass.words;
         this.lettersUl = document.querySelector(".letters ul");
         this.solutionUl = document.querySelector(".solution ul");
     }
@@ -263,15 +275,78 @@ const points = new Points
 class UpDownSun {
     updown() {
         const sunFace = document.querySelector(".sun img:last-child");
-       
         sunFace.classList.add("animationSunFace" );
-
         setTimeout(function() {
             sunFace.classList.remove("animationSunFace" );
         }, 2000)
-       
+    }
+}
+
+class NewGame {
+    constructor() {
+        this.newGameBtn = document.getElementById("newGame");
+
+        this.newGameBtn.addEventListener("click", this.gameReset)
     }
 
 
+    gameReset(){
+
+        console.log("klik")
+        this.wordsBuilder = new WordsBuilder();
+        this.lettersUl = this.wordsBuilder.lettersUl;
+        this.solutionUl = this.wordsBuilder.solutionUl;
+        this.wordsBuilder.resetUl(this.lettersUl);  
+        this.wordsBuilder.resetUl(this.solutionUl); 
+
+        for (let i = 0; i < 5; i++){
+            this.newLi = document.createElement("li");
+            this.newLi.innerText = "";
+            this.lettersUl.appendChild(this.newLi);
+        }
+
+        for (let i = 0; i < 4; i++){
+                this.newLi = document.createElement("li");
+                this.newLi.innerText = "";
+                this.solutionUl.appendChild(this.newLi);
+        }
+
+       StaticClass.medal.src = "img/score/medal.svg";
+       StaticClass.mainImg.src = "img/words/sowa.svg";
+
+        }
+
+
+
+        
 }
 
+const newGame = new NewGame
+
+
+class Hint {
+    constructor() {
+        this.hintBtn = document.getElementById("hint");
+        this.nbr = 0;
+
+        this.hintBtn.addEventListener("click", this.getHint.bind(this))
+    }
+
+    getHint() {
+        this.wordsBuilder = new WordsBuilder();  
+        this.solution = this.wordsBuilder.solutionUl;
+
+        console.log(this.solution)
+        this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
+        console
+        console.log(this.solutionBtns[this.nbr])
+        this.solutionBtn = this.solutionBtns[this.nbr];
+        // console.log(this.solutionField)
+        this.solutionBtn.innerText = this.solutionBtn.getAttribute("data-letter");
+
+        this.nbr++
+    }
+    
+}
+
+const hint = new Hint

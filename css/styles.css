@@ -514,6 +514,7 @@ main .navigation div p {
 }
 
 main .navigation div .button {
+  cursor: pointer;
   height: 60px;
   width: 60px;
   background-color: #EBEBEB;
@@ -528,6 +529,20 @@ main .navigation div .button {
   font-weight: bolder;
   text-align: center;
   line-height: 60px;
+}
+
+main .navigation div .button:hover {
+  background-color: #95AFC0;
+  color: rgba(224, 86, 253, 0.8);
+  -webkit-box-shadow: 5px 5px 0px 1px #3A336B;
+          box-shadow: 5px 5px 0px 1px #3A336B;
+  text-shadow: 2px 2px 2px #95AFC0, 0 0 0 #000, 2px 2px 2px #95AFC0;
+}
+
+main .navigation div .button:active {
+  -webkit-box-shadow: 0px 0px 0px 0px #3A336B;
+          box-shadow: 0px 0px 0px 0px #3A336B;
+  text-shadow: 0.5px 0.5px 0.5px #95AFC0, 0 0 0 #000, 0.5px 0.5px 0.5px #95AFC0;
 }
 
 main .navigation .sun {
@@ -553,5 +568,17 @@ main .navigation .sun img:nth-of-type(2) {
 main .navigation .sun img:first-child {
   -webkit-animation: rotate-sacle-sun 30s linear infinite;
           animation: rotate-sacle-sun 30s linear infinite;
+}
+
+main .navigation .footer {
+  font-size: 1rem;
+  color: #C3CFD9;
+  text-decoration: none;
+}
+
+main .navigation .footer a {
+  font-size: 1rem;
+  color: #C3CFD9;
+  text-decoration: none;
 }
 /*# sourceMappingURL=styles.css.map */

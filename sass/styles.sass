@@ -199,6 +199,7 @@ main
                 max-width: 300px
                 +text-style
             .button
+                cursor: pointer
                 height: 60px
                 width: 60px
                 background-color: $btn-color
@@ -208,6 +209,15 @@ main
                 color: rgba(224,86,253, 0.8)
                 text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def
                 +font-upperCase (4em, 60px )
+                &:hover
+                    background-color: $btn-shadow-color
+                    color: rgba(224,86,253, 0.8)
+                    box-shadow: 5px 5px 0px 1px $btn-font-color
+                    text-shadow: 2px 2px 2px $btn-shadow-color, 0 0 0 #000, 2px 2px 2px $btn-shadow-color
+                &:active
+                    box-shadow: 0px 0px 0px 0px $btn-font-color
+                    text-shadow: 0.5px 0.5px 0.5px $btn-shadow-color, 0 0 0 #000, 0.5px 0.5px 0.5px $btn-shadow-color
+
         .sun
             height: 30%
             flex-grow: 1
@@ -226,3 +236,11 @@ main
                 //     animation: up-down-sun 5s linear infinite
                 &:first-child
                     animation: rotate-sacle-sun 30s linear infinite
+        .footer
+            font-size: 1rem
+            color: $gray-color
+            text-decoration: none
+            a
+                font-size: 1rem
+                color: $gray-color
+                text-decoration: none
