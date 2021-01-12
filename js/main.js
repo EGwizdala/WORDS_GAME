@@ -79,7 +79,7 @@ class ChangeImage {
             // console.log(firstLetter.toUpperCase(), alphabetLetter)
             if(firstLetter.toUpperCase() === alphabetLetter){
                
-                StaticClass.mainImg.src = `../img/words/${word.toLowerCase()}.svg`;
+                StaticClass.mainImg.src = `WORDS_GAME/`+`../img/words/${word.toLowerCase()}.svg`;
                 const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
                 const newPermut= new Permut(wordRandomLetters);
                 const mixedWord = newPermut.mixedword;
