@@ -28,7 +28,7 @@ class Aside {
 const aside = new Aside()
 
 class StaticClass {
-    static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "x-rays", "yeti", "wilk", "ząb" ];
+    static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
 
     static medal =  document.querySelector(".medal img");
 
@@ -79,7 +79,7 @@ class ChangeImage {
             // console.log(firstLetter.toUpperCase(), alphabetLetter)
             if(firstLetter.toUpperCase() === alphabetLetter){
                
-                StaticClass.mainImg.src = `../img/words/${word}.svg`;
+                StaticClass.mainImg.src = `../img/words/${word.toLowerCase()}.svg`;
                 const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
                 const newPermut= new Permut(wordRandomLetters);
                 const mixedWord = newPermut.mixedword;
