@@ -18,9 +18,9 @@ class Aside {
         this.elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
         this.className = ["showAside", "arrowRotate"];
         this.aside = new Toggle();
-        // document.querySelector(".arrow").addEventListener("click", this.aside.toggleVar.bind(this));
+        document.querySelector(".arrow").addEventListener("click", this.aside.toggleVar.bind(this));
 
-        document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.toggleVar.bind(this));
+        // document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.toggleVar.bind(this));
     }
 }
 
