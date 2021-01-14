@@ -1,17 +1,14 @@
 let pointNumber = 0;
 
 
-
-
 class Toggle {
     toggle(element, className) {
-            element.classList.toggle(className)
-        
+            element.classList.toggle(className);
     }
 
     toggleVar() {
         for(let i = 0; i < this.elements.length; i++ ){
-            this.elements[i].classList.toggle(this.className[i])
+            this.elements[i].classList.toggle(this.className[i]);
         }
     }
 }
@@ -22,6 +19,8 @@ class Aside {
         this.className = ["showAside", "arrowRotate"];
         this.aside = new Toggle();
         document.querySelector(".arrow").addEventListener("click", this.aside.toggleVar.bind(this));
+
+        document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.toggleVar.bind(this));
     }
 }
 
@@ -35,31 +34,15 @@ class StaticClass {
     static mainImg =  document.querySelector(".mainImg img");
 }
 
-
 class ChangeImage {
-
-    
-
     constructor() {
-        
         this.letters = [...document.querySelectorAll(".alphabet li")];
-        
         for (let i = 0; i < this.letters.length; i++) {
-            this.letters[i].addEventListener("click", this.clickFunction)
+            this.letters[i].addEventListener("click", this.clickSideLetter)
         }
-
-        
-        // this.letters.forEach(letter => {
-        //  letter.addEventListener("click", this.clickFunction)
-        // })
-        
-      
     }
-
    
-    clickFunction() {
-        console.log(this)
-        // this.pointNumber = 0;
+    clickSideLetter() {
         this.caption = document.querySelector(".caption");
         this.caption.innerText = "Wybierz literkę!";
         this.wordsBuilder = new WordsBuilder();
@@ -72,34 +55,33 @@ class ChangeImage {
         let alphabetLetter = this.innerText;
         let firstLetter;
         this.words = StaticClass.words;
+       
         
         for (let i = 0; i < this.words.length; i++)  {
             let word = this.words[i]
             firstLetter = word.charAt(0);
-            // console.log(firstLetter.toUpperCase(), alphabetLetter)
+         
             if(firstLetter.toUpperCase() === alphabetLetter){
-               
-                StaticClass.mainImg.src = `../img/words/${word.toLowerCase()}.svg`;
+                StaticClass.mainImg.src =`WORDS_GAME/`+`../img/words/${word.toLowerCase()}.svg`;
                 const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
                 const newPermut= new Permut(wordRandomLetters);
                 const mixedWord = newPermut.mixedword;
-                const newImg = this.wordsBuilder.getLetter( mixedWord, this.lettersUl);
+                const newImg = this.wordsBuilder.getLetter(mixedWord, this.lettersUl);
                 const newInput = this.wordsBuilder.getInput(word, this.solutionUl);
 
-
                 this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
-                this.nbr = 1;
+                let nbr = 1;
+                // this.hint = new Hint;
+
+                // let newNbr = this.hint.getHint();
                 
+                
+               
 
                 for (let i = 0; i < this.letterBtns.length; i++) {
-                    this.letterBtns[i].addEventListener("click", () => {
-                        console.log(this);
-                       
-                                        
+                    this.letterBtns[i].addEventListener("click", () => { 
+                        
                         this.button = this.letterBtns[i];
-                        // this.button.classList.add("buttonActive");
-                       
-
                         this.solution =  this.solutionUl;
                      
                         this.wordsBuilder = new WordsBuilder();  
@@ -107,27 +89,22 @@ class ChangeImage {
                         this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
                         this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
                         
-                        this.solutionField = this.solution.querySelector(`li:nth-child(${this.nbr})`);
+                        this.solutionField = this.solution.querySelector(`li:nth-child(${nbr})`);
                         const buttonLetter = this.button.innerText;
-                     
                         const solutionLetter = this.solutionField.getAttribute("data-letter");
-                        if (solutionLetter.toUpperCase() === buttonLetter) {
-                            this.button.style.backgroundColor = "#95AFC0";
-                            this.button.style.color = "rgba(235,235,235, 0.8)";
-                            this.button.style.boxShadow = "0px 0px 0px 0px #3A336B";
-                            this.button.style.textShadow = "0.5px 0.5px 0.5px #95AFC0, 0 0 0 #000, 0.5px 0.5px 0.5px #95AFC0";
 
-                            this.solutionField.innerText = buttonLetter;
-                            this.nbr++;
+
+                        if (solutionLetter.toUpperCase() === buttonLetter) {
+                            const butttonDisable = new ButtnDisabled;
+                            butttonDisable.disable(this.button);
+                            butttonDisable.addLetter(this.solutionField, buttonLetter)
+                            nbr++;
                             const newsun = new UpDownSun;
                             newsun.updown();
                         }
                        
                         if (this.solutionField.getAttribute("data-nbr") == this.solutionBtns.length) {
-                            
-
                             this.caption.innerText = "Brawo! Wyraz gotowy!";
-                            
                             //dodawanie punktów
                             this.hearts = document.querySelectorAll(".heart li i");
                             this.medal = document.querySelector(".medal");
@@ -137,17 +114,16 @@ class ChangeImage {
 
                         if(pointNumber === 6) {
                            const medal = StaticClass.medal;
-
                            medal.src = "img/score/sky.jpg"
                         }
-
-                       })
+                    })
                 }
-           
             }
-       }
+        }
     }
- 
+
+    
+
 }
 
 const changeImg = new ChangeImage();
@@ -207,7 +183,18 @@ class WordsBuilder {
     }   
 }
 
+class ButtnDisabled {
+    disable(button) {
+        button.style.backgroundColor = "#95AFC0";
+        button.style.color = "rgba(235,235,235, 0.8)";
+        button.style.boxShadow = "0px 0px 0px 0px #3A336B";
+        button.style.textShadow = "0.5px 0.5px 0.5px #95AFC0, 0 0 0 #000, 0.5px 0.5px 0.5px #95AFC0";
+    }
 
+    addLetter(solutionField, buttonLetter) {
+       solutionField.innerText = buttonLetter;
+    }
+}
 class RandomLetter {
     constructor () {
         this.alphabet = "aąbcćdeęfghijklłmnńoóprsśtuwyzźż";
@@ -289,7 +276,6 @@ class NewGame {
         this.newGameBtn.addEventListener("click", this.gameReset)
     }
 
-
     gameReset(){
 
         console.log("klik")
@@ -313,12 +299,8 @@ class NewGame {
 
        StaticClass.medal.src = "img/score/medal.svg";
        StaticClass.mainImg.src = "img/words/sowa.svg";
-
         }
 
-
-
-        
 }
 
 const newGame = new NewGame
@@ -328,25 +310,23 @@ class Hint {
     constructor() {
         this.hintBtn = document.getElementById("hint");
         this.nbr = 0;
-
-        this.hintBtn.addEventListener("click", this.getHint.bind(this))
+        this.hintBtn.addEventListener("click", this.getHint.bind(this));
+        
     }
 
     getHint() {
         this.wordsBuilder = new WordsBuilder();  
         this.solution = this.wordsBuilder.solutionUl;
-
-        console.log(this.solution)
         this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
-        console
-        console.log(this.solutionBtns[this.nbr])
         this.solutionBtn = this.solutionBtns[this.nbr];
-        // console.log(this.solutionField)
         this.solutionBtn.innerText = this.solutionBtn.getAttribute("data-letter");
-
-        this.nbr++
+        this.nbr++;
+        return this.nbr
     }
     
 }
 
-const hint = new Hint
+const hints = new Hint
+
+console.log(hints.nbr)
+
