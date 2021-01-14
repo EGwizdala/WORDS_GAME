@@ -62,7 +62,12 @@ class ChangeImage {
             firstLetter = word.charAt(0);
          
             if(firstLetter.toUpperCase() === alphabetLetter){
+<<<<<<< HEAD
                 StaticClass.mainImg.src =`WORDS_GAME/`+`../img/words/${word.toLowerCase()}.svg`;
+=======
+               
+                StaticClass.mainImg.src = `WORDS_GAME/`+`../img/words/${word.toLowerCase()}.svg`;
+>>>>>>> e0481add01fa4c0eab3fa683e570cd8ad27388af
                 const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
                 const newPermut= new Permut(wordRandomLetters);
                 const mixedWord = newPermut.mixedword;
