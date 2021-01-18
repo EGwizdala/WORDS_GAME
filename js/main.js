@@ -18,7 +18,9 @@ class Aside {
 
     toggleVar(e) {
         const child = e.target.matches(".arrow div, .arrow div *");
+        console.log(child)
         if (child) {
+            alert("clik")
             for(let i = 0; i < this.elements.length; i++ ){
                 this.elements[i].classList.toggle(this.className[i]);
         }
