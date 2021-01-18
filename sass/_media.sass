@@ -1,17 +1,29 @@
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)
+    aside
+        height: 100vh
     main
         background-color: green
-        margin-left: 38px
+        margin-left: $aside-arrow-width
         min-width: 768px
         max-width: 1024px
         min-height: auto
         .score
+            flex-flow: row no-wrap
+            flex-basis: 25%
             ul
-                li
-                    flex-basis: 20px
-                    i
-                        font-size: 4em
-                        color: red
+                width: 50%
+
+        .board
+
+            .solution ul li
+                margin: 0 5px
+                height: 80px
+                width: 80px
+
+            .letters ul li
+                margin: 0 5px
+                height: 70px
+                width: 70px
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)
     main
