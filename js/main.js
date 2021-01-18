@@ -16,7 +16,7 @@ class Aside {
         element.classList.toggle(className);
 }
 
-    toggleVar() {
+    toggleVar(e) {
         const child = e.target.matches(".arrow div, .arrow div *");
         if (child) {
             for(let i = 0; i < this.elements.length; i++ ){
