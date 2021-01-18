@@ -1,6 +1,6 @@
 let pointNumber = 0;
 function myFunction() {
-    document.getElementById("demo").innerHTML = "Hello World";
+    alert("clik")
 }
 
 class Aside {
@@ -21,7 +21,7 @@ class Aside {
         const child = e.target.matches(".arrow div, .arrow div *");
         console.log(child)
         if (child) {
-            alert("clik")
+           
             for(let i = 0; i < this.elements.length; i++ ){
                 this.elements[i].classList.toggle(this.className[i]);
         }
