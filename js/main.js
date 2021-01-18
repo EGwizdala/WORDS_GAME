@@ -8,7 +8,7 @@ class Aside {
         this.elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
         this.className = ["showAside", "arrowRotate"];
       
-        document.querySelector(".arrow").addEventListener("click", this.toggleVar.bind(this));
+        document.querySelector(".arrow").addEventListener("click touchstart", this.toggleVar.bind(this));
         
         // document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.toggleVar.bind(this));
     }
@@ -279,7 +279,7 @@ class NewGame {
     constructor() {
         this.newGameBtn = document.getElementById("newGame");
 
-        this.newGameBtn.addEventListener("click", this.gameReset)
+        this.newGameBtn.addEventListener("click touchstart", this.gameReset)
     }
 
     gameReset(){
@@ -316,7 +316,7 @@ class Hint {
     constructor() {
         this.hintBtn = document.getElementById("hint");
         this.nbr = 0;
-        this.hintBtn.addEventListener("click", this.getHint.bind(this));
+        this.hintBtn.addEventListener("click touchstart", this.getHint.bind(this));
         
     }
 
