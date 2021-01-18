@@ -1,5 +1,6 @@
 let pointNumber = 0;
-
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello World";
 
 
 class Aside {

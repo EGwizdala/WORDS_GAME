@@ -584,7 +584,8 @@ main .navigation .footer a {
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   main {
-    margin-left: 100px;
+    background-color: green;
+    margin-left: 38px;
     min-width: 768px;
     max-width: 1024px;
     min-height: auto;
