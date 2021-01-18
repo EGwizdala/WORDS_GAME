@@ -1,12 +1,27 @@
+@media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)
+    main
+        margin-left: 100px
+        min-width: 768px
+        max-width: 1024px
+        min-height: auto
+        .score
+            ul
+                li
+                    flex-basis: 20px
+                    i
+                        font-size: 4em
+                        color: red
+
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)
     main
         flex-flow: row wrap
         min-width: 768px
         max-width: 1024px
-
-
-@media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)
-    main
-    
-        min-width: 768px
-        max-width: 1024px
+        min-height: auto
+        section .score
+            ul
+                li
+                    flex-basis: 20px
+                    i
+                        font-size: 3.2em
+                        color: red
