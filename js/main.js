@@ -1,6 +1,25 @@
 let pointNumber = 0;
-function myFunction() {
-    alert("clik")
+// function myFunction() {
+//     alert("clik")
+// }
+
+const elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
+const className = ["showAside", "arrowRotate"];
+      
+document.querySelector(".arrow").addEventListener("click", toggleVar());
+        
+        // document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.
+
+function toggleVar() {
+        const child = true
+        console.log(child)
+        if (child) {
+           
+            for(let i = 0; i < this.elements.length; i++ ){
+                this.elements[i].classList.toggle(this.className[i]);
+        }
+        
+        }
 }
 
 class Aside {
@@ -8,7 +27,7 @@ class Aside {
         this.elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
         this.className = ["showAside", "arrowRotate"];
       
-        document.querySelector(".arrow").addEventListener("click touchstart", this.toggleVar.bind(this));
+        document.querySelector(".arrow").addEventListener("click", this.toggleVar.bind(this));
         
         // document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.toggleVar.bind(this));
     }
@@ -30,7 +49,7 @@ class Aside {
 }
 }
 
-const aside = new Aside()
+// const aside = new Aside()
 
 class StaticClass {
     static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
@@ -281,6 +300,7 @@ class NewGame {
 
         this.newGameBtn.addEventListener("click touchstart", this.gameReset)
     }
+
 
     gameReset(){
 
