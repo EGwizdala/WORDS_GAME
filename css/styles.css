@@ -147,7 +147,6 @@ aside {
   min-height: 800px;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
-  cursor: pointer;
 }
 
 aside .alphabet {
@@ -169,10 +168,10 @@ aside .alphabet {
   height: 100%;
   padding: 0 5px;
   color: #f6e58d;
-  cursor: pointer;
 }
 
 aside .alphabet li {
+  cursor: pointer;
   -ms-flex-preferred-size: 8%;
       flex-basis: 8%;
   width: 50%;
@@ -207,6 +206,7 @@ aside .arrow {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 
 aside .arrow::before {

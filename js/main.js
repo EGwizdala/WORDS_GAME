@@ -3,24 +3,18 @@ let pointNumber = 0;
 //     alert("clik")
 // }
 
-// const elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
-// const className = ["showAside", "arrowRotate"];
+const elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
+const className = ["showAside", "arrowRotate"];
       
-// document.querySelector(".arrow").addEventListener("click", toggleVar());
+document.querySelector(".arrow").addEventListener("click", toggleVar);
         
-        // document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.
+       
 
-// function toggleVar() {
-//         const child = true
-//         console.log(child)
-//         if (child) {
-           
-//             for(let i = 0; i < this.elements.length; i++ ){
-//                 this.elements[i].classList.toggle(this.className[i]);
-//         }
-        
-//         }
-// }
+function toggleVar() {
+       alert("kliknieto")
+       document.querySelector(".arrow").style.backgroundColor = "red"
+    
+}
 
 class Aside {
     constructor() { 
@@ -49,7 +43,7 @@ class Aside {
 }
 }
 
-const aside = new Aside()
+// const aside = new Aside()
 
 class StaticClass {
     static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
