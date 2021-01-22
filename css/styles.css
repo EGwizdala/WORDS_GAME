@@ -417,7 +417,9 @@ main .board .solution ul, main .board .letters ul {
 
 main .board .solution ul li {
   background-color: #BADC58;
+  min-height: 90px;
   height: 90px;
+  min-width: 90px;
   width: 90px;
   border-radius: 50%;
   margin: 0 10px;
@@ -433,10 +435,12 @@ main .board .solution ul li {
 main .board .letters ul li {
   background-color: #EBEBEB;
   height: 80px;
+  min-height: 80px;
   width: 80px;
+  min-width: 80px;
   border-radius: 30%;
   border: none;
-  margin: 0 20px;
+  margin: 0 10px;
   -webkit-box-shadow: 5px 5px 0px 1px #95AFC0;
           box-shadow: 5px 5px 0px 1px #95AFC0;
   color: rgba(10, 60, 150, 0.8);
@@ -593,14 +597,14 @@ main .navigation .footer a {
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   aside {
-    height: 500px;
+    min-height: 768px;
   }
   main {
     background-color: green;
     margin-left: 38px;
     min-width: 768px;
     max-width: 1024px;
-    min-height: auto;
+    min-height: 768px;
   }
   main .score {
     -webkit-box-orient: horizontal;
@@ -622,6 +626,13 @@ main .navigation .footer a {
     margin: 0 5px;
     height: 70px;
     width: 70px;
+  }
+  main .navigation div p {
+    font-size: 2.5em;
+  }
+  main .navigation .sun img {
+    width: 70%;
+    max-width: 250px;
   }
 }
 

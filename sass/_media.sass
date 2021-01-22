@@ -1,12 +1,15 @@
-@media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)
+@media (min-device-width: 768px) and (max-device-width: 1024px) and
+
     aside
-        height: 500px
+
+        min-height: 768px
+
     main
         background-color: green
         margin-left: $aside-arrow-width
         min-width: 768px
         max-width: 1024px
-        min-height: auto
+        min-height: 768px
         .score
             flex-flow: row no-wrap
             flex-basis: 25%
@@ -24,7 +27,14 @@
                 margin: 0 5px
                 height: 70px
                 width: 70px
-
+        .navigation
+            div
+                p
+                    font-size: 2.5em
+            .sun
+                img
+                    width: 70%
+                    max-width: 250px
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)
     main
         flex-flow: row wrap
