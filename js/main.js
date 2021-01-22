@@ -51,15 +51,15 @@ const medal = document.querySelector(".medal img");
     
 const mainImg =  document.querySelector(".mainImg img");
 
-class StaticClass {
+// class StaticClass {
    
-        static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
+    //     static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
 
-        static medal =  document.querySelector(".medal img");
+    //     static medal =  document.querySelector(".medal img");
     
-        static mainImg =  document.querySelector(".mainImg img");
+    //     static mainImg =  document.querySelector(".mainImg img");
     
-    }
+    // }
    
 
 class ChangeImage {
