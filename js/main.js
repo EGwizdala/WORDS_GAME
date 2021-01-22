@@ -6,7 +6,7 @@ let pointNumber = 0;
 const elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
 const className = ["showAside", "arrowRotate"];
       
-document.querySelector(".arrow").addEventListener("click", toggleVar);
+// document.querySelector(".arrow").addEventListener("click", toggleVar);
         
        
 
@@ -43,15 +43,24 @@ class Aside {
 }
 }
 
-// const aside = new Aside()
+const aside = new Aside()
+
+const words =  ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
+
+const medal = document.querySelector(".medal img");
+    
+const mainImg =  document.querySelector(".mainImg img");
 
 class StaticClass {
-    static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
+   
+        static words = ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
 
-    static medal =  document.querySelector(".medal img");
-
-    static mainImg =  document.querySelector(".mainImg img");
-}
+        static medal =  document.querySelector(".medal img");
+    
+        static mainImg =  document.querySelector(".mainImg img");
+    
+    }
+   
 
 class ChangeImage {
     constructor() {
@@ -73,7 +82,7 @@ class ChangeImage {
 
         let alphabetLetter = this.innerText;
         let firstLetter;
-        this.words = StaticClass.words;
+        this.words = words;
        
         
         for (let i = 0; i < this.words.length; i++)  {
@@ -81,7 +90,7 @@ class ChangeImage {
             firstLetter = word.charAt(0);
          
             if(firstLetter.toUpperCase() === alphabetLetter){
-                StaticClass.mainImg.src =`WORDS_GAME/`+`../img/words/${word.toLowerCase()}.svg`;
+                mainImg.src =`WORDS_GAME/`+`../img/words/${word.toLowerCase()}.svg`;
                 const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
                 const newPermut= new Permut(wordRandomLetters);
                 const mixedWord = newPermut.mixedword;
@@ -132,7 +141,7 @@ class ChangeImage {
                         }
 
                         if(pointNumber === 6) {
-                           const medal = StaticClass.medal;
+                           const medal = medal;
                            medal.src = "img/score/sky.jpg"
                         }
                     })
@@ -148,7 +157,7 @@ class ChangeImage {
 const changeImg = new ChangeImage();
 class WordsBuilder {
     constructor() {
-        this.words = StaticClass.words;
+        this.words = words;
         this.lettersUl = document.querySelector(".letters ul");
         this.solutionUl = document.querySelector(".solution ul");
     }
@@ -317,8 +326,9 @@ class NewGame {
                 this.solutionUl.appendChild(this.newLi);
         }
 
-       StaticClass.medal.src = "img/score/medal.svg";
-       StaticClass.mainImg.src = "img/words/sowa.svg";
+       
+        medal.src = "img/score/medal.svg";
+        mainImg.src = "img/words/sowa.svg";
         }
 
 }

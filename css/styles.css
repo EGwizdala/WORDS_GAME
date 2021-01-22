@@ -127,6 +127,11 @@
   font-size: 10px;
 }
 
+body {
+  height: 100vh;
+  width: 100%;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -588,7 +593,7 @@ main .navigation .footer a {
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   aside {
-    height: 100vh;
+    height: 500px;
   }
   main {
     background-color: green;
