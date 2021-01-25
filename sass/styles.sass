@@ -83,6 +83,8 @@ aside
                 top: 50%
                 left: 50%
                 transform: translate(-50%, -50%)
+            i.fa-chevron-down
+                display: none
 main
     flex-flow: row no-wrap
     width: 100%
@@ -95,9 +97,8 @@ main
         flex-basis: 30%
         height: 100%
     .score
-        flex-basis: 30%
         flex-flow: column wrap
-        height: 100%
+        flex-basis: 30%
         +center-flex
 
         ul
@@ -191,7 +192,6 @@ main
             +text-style
 
     .navigation
-        flex-basis: 30%
         display: flex
         flex-flow: column wrap
         justify-content: center

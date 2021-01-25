@@ -1,11 +1,9 @@
-@media (min-device-width: 768px) and (max-device-width: 1024px) and
-
+@media (min-device-width: 768px) and (max-device-width: 1024px) and  (orientation: landscape)
     aside
 
         min-height: 768px
 
     main
-        background-color: green
         margin-left: $aside-arrow-width
         min-width: 768px
         max-width: 1024px
@@ -22,11 +20,13 @@
                 margin: 0 5px
                 height: 80px
                 width: 80px
+                +font-upperCase (5em, 80px )
 
             .letters ul li
                 margin: 0 5px
                 height: 70px
                 width: 70px
+                +font-upperCase (4.5em, 70px )
         .navigation
             div
                 p
@@ -35,16 +35,146 @@
                 img
                     width: 70%
                     max-width: 250px
+
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)
+    aside
+        top: -110px
+        left: 0
+        width: 100%
+        height: 130px
+        min-width: 768px
+        min-height: auto
+        z-index: 2
+
+        .alphabet
+            flex-flow: row wrap
+            width: 100%
+            height: 100%
+            padding: 5 0
+            li
+                cursor: pointer
+                flex-basis: 8%
+                width: 50%
+                font-family: 'Secular One', sans-serif
+                +font-upperCase (4em, calc(100vw / 12) )
+        .arrow
+            position: absolute
+            top: $aside-width
+            left: 0
+            height: 40px
+            width: 100%
+            &::before
+                position: absolute
+                top: 0
+                left: 0
+                height: 2px
+                width: 100%
+            div
+                i.fa-chevron-down
+                    display: inline
+                i.fa-chevron-right
+                    display: none
+
     main
-        flex-flow: row wrap
+        flex-flow: column wrap
         min-width: 768px
         max-width: 1024px
-        min-height: auto
-        section .score
+        min-height: 768px
+        section
+            flex-basis: 20%
+            height: 20%
+            width: 100%
+
+        .score
+            flex-basis: 20%
+            height: 20%
+            width: 100%
+            padding-top: 0
+            flex-flow: row wrap
+            justify-content: flex-start
+            align-items: flex-end
+            position: relative
             ul
-                li
-                    flex-basis: 20px
-                    i
-                        font-size: 3.2em
-                        color: red
+                margin-top: 0
+                flex-basis: 70%
+                width: 70%
+                height: 50%
+                order: 1
+            div:nth-of-type(1)
+                flex-basis: 60%
+                width: 70%
+                height: 50%
+                order: 3
+                margin-top: 0
+                position: absolute
+                top: 30%
+                line-height: 60px
+
+            .medal
+                min-height: 150px
+                flex-basis: 30%
+                width: 30%
+                order: 2
+                align-items: center
+                img
+                    width: 100%
+                    min-width: 150px
+                    max-width: 230px
+
+        .board
+            flex-basis: 60%
+            width: 100%
+            .solution, .letters
+                height: 100px
+            .solution ul li
+                min-height: 70px
+                height: 70px
+                min-width: 70px
+                width: 70px
+                +font-upperCase (4.5em, 70px )
+            .letters ul li
+                height: 60px
+                min-height: 60px
+                width: 60px
+                min-width: 60px
+                +font-upperCase (4em, 60px )
+
+        .navigation
+            flex-flow: row wrap
+            padding-top: 0px
+            position: relative
+            div:not(.button):first-child, div:not(.button):nth-child(2)
+                flex-basis: 50%
+                height: 50%
+                justify-content: center
+                p
+                    font-size: 2.2em
+                    max-width: 150px
+                .button
+
+                    cursor: pointer
+                    height: 60px
+                    width: 60px
+            div:not(.button):first-child
+                order: 1
+            div:not(.button):nth-child(2)
+                order: 3
+                position: absolute
+                top: 50%
+                left: 0
+                width: 50%
+            .sun
+                flex-basis: 50%
+                width: 50%
+                flex-grow: 0
+                height: 90%
+                order: 2
+                img
+                    margin-top: 0
+                    width: 70%
+                    max-width: 150px
+
+            .footer
+                height: 10%
+                width: 50%
+                order: 3

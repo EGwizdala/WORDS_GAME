@@ -238,6 +238,10 @@ aside .arrow div i {
           transform: translate(-50%, -50%);
 }
 
+aside .arrow div i.fa-chevron-down {
+  display: none;
+}
+
 main {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -265,13 +269,12 @@ main section {
 }
 
 main .score {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  height: 100%;
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -480,8 +483,6 @@ main .board div:last-child {
 }
 
 main .navigation {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -600,7 +601,6 @@ main .navigation .footer a {
     min-height: 768px;
   }
   main {
-    background-color: green;
     margin-left: 38px;
     min-width: 768px;
     max-width: 1024px;
@@ -621,11 +621,21 @@ main .navigation .footer a {
     margin: 0 5px;
     height: 80px;
     width: 80px;
+    font-size: 5em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 80px;
   }
   main .board .letters ul li {
     margin: 0 5px;
     height: 70px;
     width: 70px;
+    font-size: 4.5em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 70px;
   }
   main .navigation div p {
     font-size: 2.5em;
@@ -637,22 +647,221 @@ main .navigation .footer a {
 }
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  main {
+  aside {
+    top: -110px;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    min-width: 768px;
+    min-height: auto;
+    z-index: 2;
+  }
+  aside .alphabet {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
+    width: 100%;
+    height: 100%;
+    padding: 5 0;
+  }
+  aside .alphabet li {
+    cursor: pointer;
+    -ms-flex-preferred-size: 8%;
+        flex-basis: 8%;
+    width: 50%;
+    font-family: 'Secular One', sans-serif;
+    font-size: 4em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+    line-height: calc(100vw / 12);
+  }
+  aside .arrow {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    height: 40px;
+    width: 100%;
+  }
+  aside .arrow::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+  }
+  aside .arrow div i.fa-chevron-down {
+    display: inline;
+  }
+  aside .arrow div i.fa-chevron-right {
+    display: none;
+  }
+  main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
     min-width: 768px;
     max-width: 1024px;
-    min-height: auto;
+    min-height: 768px;
   }
-  main section .score ul li {
-    -ms-flex-preferred-size: 20px;
-        flex-basis: 20px;
+  main section {
+    -ms-flex-preferred-size: 20%;
+        flex-basis: 20%;
+    height: 20%;
+    width: 100%;
   }
-  main section .score ul li i {
-    font-size: 3.2em;
-    color: red;
+  main .score {
+    -ms-flex-preferred-size: 20%;
+        flex-basis: 20%;
+    height: 20%;
+    width: 100%;
+    padding-top: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    position: relative;
+  }
+  main .score ul {
+    margin-top: 0;
+    -ms-flex-preferred-size: 70%;
+        flex-basis: 70%;
+    width: 70%;
+    height: 50%;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  main .score div:nth-of-type(1) {
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+    width: 70%;
+    height: 50%;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    margin-top: 0;
+    position: absolute;
+    top: 30%;
+    line-height: 60px;
+  }
+  main .score .medal {
+    min-height: 150px;
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+    width: 30%;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  main .score .medal img {
+    width: 100%;
+    min-width: 150px;
+    max-width: 230px;
+  }
+  main .board {
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+    width: 100%;
+  }
+  main .board .solution, main .board .letters {
+    height: 100px;
+  }
+  main .board .solution ul li {
+    min-height: 70px;
+    height: 70px;
+    min-width: 70px;
+    width: 70px;
+    font-size: 4.5em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 70px;
+  }
+  main .board .letters ul li {
+    height: 60px;
+    min-height: 60px;
+    width: 60px;
+    min-width: 60px;
+    font-size: 4em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 60px;
+  }
+  main .navigation {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    padding-top: 0px;
+    position: relative;
+  }
+  main .navigation div:not(.button):first-child, main .navigation div:not(.button):nth-child(2) {
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+    height: 50%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  main .navigation div:not(.button):first-child p, main .navigation div:not(.button):nth-child(2) p {
+    font-size: 2.2em;
+    max-width: 150px;
+  }
+  main .navigation div:not(.button):first-child .button, main .navigation div:not(.button):nth-child(2) .button {
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+  }
+  main .navigation div:not(.button):first-child {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  main .navigation div:not(.button):nth-child(2) {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 50%;
+  }
+  main .navigation .sun {
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+    width: 50%;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    height: 90%;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  main .navigation .sun img {
+    margin-top: 0;
+    width: 70%;
+    max-width: 150px;
+  }
+  main .navigation .footer {
+    height: 10%;
+    width: 50%;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
   }
 }
 /*# sourceMappingURL=styles.css.map */
