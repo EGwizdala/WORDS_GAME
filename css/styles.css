@@ -108,9 +108,18 @@
   left: 0;
 }
 
+.showAsideTop {
+  top: 0;
+}
+
 .arrowRotate {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+.arrowRotateTop {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
 }
 
 .animationSunFace {

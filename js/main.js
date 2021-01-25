@@ -20,23 +20,27 @@ class Aside {
     constructor() { 
         this.elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
         this.className = ["showAside", "arrowRotate"];
-      
+        this.classNamePortr = ["showAsideTop", "arrowRotateTop"];
+
         document.querySelector(".arrow").addEventListener("click", this.toggleVar.bind(this));
         
         // document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.toggleVar.bind(this));
     }
 
-    toggle(element, className) {
-        element.classList.toggle(className);
-}
-
     toggleVar(e) {
+        let className = ""
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            className = this.classNamePortr
+          }
+         else if (window.matchMedia("(orientation: landscape)").matches) {
+            className = this.className
+          }
         const child = e.target.matches(".arrow div, .arrow div *");
         console.log(child)
         if (child) {
            
             for(let i = 0; i < this.elements.length; i++ ){
-                this.elements[i].classList.toggle(this.className[i]);
+                this.elements[i].classList.toggle(className[i]);
         }
         
         }
