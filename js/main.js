@@ -1,20 +1,7 @@
-let pointNumber = 0;
-// function myFunction() {
-//     alert("clik")
-// }
+
 
 const elements = [document.querySelector("aside"), document.querySelector(".arrow div")];
 const className = ["showAside", "arrowRotate"];
-      
-// document.querySelector(".arrow").addEventListener("click", toggleVar);
-        
-       
-
-function toggleVar() {
-       alert("kliknieto")
-       document.querySelector(".arrow").style.backgroundColor = "red"
-    
-}
 
 class Aside {
     constructor() { 
@@ -23,8 +10,6 @@ class Aside {
         this.classNamePortr = ["showAsideTop", "arrowRotateTop"];
 
         document.querySelector(".arrow").addEventListener("click", this.toggleVar.bind(this));
-        
-        // document.querySelector(".arrow").addEventListener("ontouchstart", this.aside.toggleVar.bind(this));
     }
 
     toggleVar(e) {
@@ -32,11 +17,11 @@ class Aside {
         if (window.matchMedia("(orientation: portrait)").matches) {
             className = this.classNamePortr
           }
-         else if (window.matchMedia("(orientation: landscape)").matches) {
+        else if (window.matchMedia("(orientation: landscape)").matches) {
             className = this.className
           }
         const child = e.target.matches(".arrow div, .arrow div *");
-        console.log(child)
+        
         if (child) {
            
             for(let i = 0; i < this.elements.length; i++ ){
@@ -49,15 +34,16 @@ class Aside {
 
 const aside = new Aside()
 
+
 const words =  ["arbuz", "banan", "cytryna", "dzik", "elf", "foka", "gitara", "hamburger", "igła", "jabłko", "kot", "lis", "motyl", "niedźwiedź", "okno", "pies", "rower", "serce", "telefon", "ucho", "xrays", "yeti", "wilk", "ząb" ];
-
 const medal = document.querySelector(".medal img");
-    
 const mainImg =  document.querySelector(".mainImg img");
+const hearts = document.querySelectorAll(".heart li i");
+let pointNumber = 0; 
+let buttonNbr = 1;
+let solutionNbr = 0;
 
-   
-
-class ChangeImage {
+class StartGame {
     constructor() {
         this.letters = [...document.querySelectorAll(".alphabet li")];
         for (let i = 0; i < this.letters.length; i++) {
@@ -68,13 +54,8 @@ class ChangeImage {
     clickSideLetter() {
         this.caption = document.querySelector(".caption");
         this.caption.innerText = "Wybierz literkę!";
-        this.wordsBuilder = new WordsBuilder();
-        this.lettersUl = this.wordsBuilder.lettersUl;
-        this.solutionUl = this.wordsBuilder.solutionUl;
-
-        this.wordsBuilder.resetUl(this.lettersUl);  
-        this.wordsBuilder.resetUl(this.solutionUl);  
-
+        this.newGame = new NewGame();
+        this.newGame.clearFields(); 
         let alphabetLetter = this.innerText;
         let firstLetter;
         this.words = words;
@@ -86,70 +67,13 @@ class ChangeImage {
          
             if(firstLetter.toUpperCase() === alphabetLetter){
                 mainImg.src =`WORDS_GAME/`+`../img/words/${word.toLowerCase()}.svg`;
-                const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
-                const newPermut= new Permut(wordRandomLetters);
-                const mixedWord = newPermut.mixedword;
-                const newImg = this.wordsBuilder.getLetter(mixedWord, this.lettersUl);
-                const newInput = this.wordsBuilder.getInput(word, this.solutionUl);
-
-                this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
-                let nbr = 1;
-                // this.hint = new Hint;
-
-                // let newNbr = this.hint.getHint();
-                
-                
-               
-
-                for (let i = 0; i < this.letterBtns.length; i++) {
-                    this.letterBtns[i].addEventListener("click", () => { 
-                        
-                        this.button = this.letterBtns[i];
-                        this.solution =  this.solutionUl;
-                     
-                        this.wordsBuilder = new WordsBuilder();  
-                  
-                        this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
-                        this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
-                        
-                        this.solutionField = this.solution.querySelector(`li:nth-child(${nbr})`);
-                        const buttonLetter = this.button.innerText;
-                        const solutionLetter = this.solutionField.getAttribute("data-letter");
-
-
-                        if (solutionLetter.toUpperCase() === buttonLetter) {
-                            const butttonDisable = new ButtnDisabled;
-                            butttonDisable.disable(this.button);
-                            butttonDisable.addLetter(this.solutionField, buttonLetter)
-                            nbr++;
-                            const newsun = new UpDownSun;
-                            newsun.updown();
-                        }
-                       
-                        if (this.solutionField.getAttribute("data-nbr") == this.solutionBtns.length) {
-                            this.caption.innerText = "Brawo! Wyraz gotowy!";
-                            //dodawanie punktów
-                            this.hearts = document.querySelectorAll(".heart li i");
-                            this.medal = document.querySelector(".medal");
-                            this.hearts[pointNumber].style.color = "#EB4D4B";
-                            pointNumber++                            
-                        }
-
-                        if(pointNumber === 6) {
-                           const medal = medal;
-                           medal.src = "img/score/sky.jpg"
-                        }
-                    })
-                }
+                this.newGame.checkCorrectLetter(word, this.caption);
             }
         }
     }
-
-    
-
 }
 
-const changeImg = new ChangeImage();
+const startGame = new StartGame();
 class WordsBuilder {
     constructor() {
         this.words = words;
@@ -212,6 +136,7 @@ class ButtnDisabled {
         button.style.color = "rgba(235,235,235, 0.8)";
         button.style.boxShadow = "0px 0px 0px 0px #3A336B";
         button.style.textShadow = "0.5px 0.5px 0.5px #95AFC0, 0 0 0 #000, 0.5px 0.5px 0.5px #95AFC0";
+        button.dataset.status = "disabled" ;
     }
 
     addLetter(solutionField, buttonLetter) {
@@ -265,50 +190,117 @@ class Permut {
 }
 
 class Points {
-    constructor() {
-        this.hearts = document.querySelectorAll(".heart li i");
-        this.medal = document.querySelector(".medal");
-        this.pointsNumber = 0;
+    addPoint() {
+        console.log(pointNumber)
+        hearts[pointNumber].style.color = "#EB4D4B";
+        pointNumber++
     }
 
-    addPoint() {
-        console.log(this.pointsNumber)
-        this.hearts[this.pointsNumber].style.color = "#EB4D4B";
-      this.pointsNumber++
+    giveMedal() {
+        if(pointNumber === 6) {
+        medal.src = "img/score/sky.jpg"
+        }
+    }
+
+    resetPoinst(){
+        medal.src = "img/score/medal.svg";
+        mainImg.src = "img/words/sowa.svg";
+        hearts.forEach(element => {
+        element.style.color = "#C3CFD9";
+
+        });
     }
 
 }
-
-const points = new Points
 
 
 class UpDownSun {
     updown() {
         const sunFace = document.querySelector(".sun img:last-child");
         sunFace.classList.add("animationSunFace" );
+        
         setTimeout(function() {
             sunFace.classList.remove("animationSunFace" );
         }, 2000)
     }
 }
 
+
+
+
+class Hint {
+    constructor(lettersUl, solutionUl) {
+        this.hintBtn = document.getElementById("hint");
+        this.hintBtn.addEventListener("click", this.getHint.bind(this));
+        this.lettersUl = lettersUl;
+        this.solutionUl = solutionUl;
+    }
+
+    getHint() {
+     
+        this.wordsBuilder = new WordsBuilder();  
+        this.solutionBtns = this.solutionUl.querySelectorAll("li");
+        this.solutionBtn = this.solutionBtns[solutionNbr];
+        this.solutionBtn.innerText = this.solutionBtn.getAttribute("data-letter");
+        this.letterBtns = this.lettersUl.querySelectorAll("li");
+
+        
+        this.letterBtns.forEach(btn => {
+        
+            if( btn.innerText == this.solutionBtn.innerText) {
+
+                    const letter = btn.innerText;
+            
+
+                    for(let i = 0; i < this.letterBtns.length; i++) {
+                         if(letter == this.letterBtns[i].innerText) {
+                  
+                        const butttonDisable = new ButtnDisabled;
+                        butttonDisable.disable(this.letterBtns[i] );
+                       
+                        break;
+                    }
+                    
+                   
+                    }
+                   
+                if (this.solutionBtn.innerText)
+                console.log("jest super")
+               
+           }
+             
+        
+        })
+      
+        buttonNbr ++;
+        solutionNbr++;
+
+      
+    }
+    
+}
+
+
 class NewGame {
     constructor() {
         this.newGameBtn = document.getElementById("newGame");
-
-        this.newGameBtn.addEventListener("click touchstart", this.gameReset)
-    }
-
-
-    gameReset(){
-
-        console.log("klik")
         this.wordsBuilder = new WordsBuilder();
         this.lettersUl = this.wordsBuilder.lettersUl;
         this.solutionUl = this.wordsBuilder.solutionUl;
+        this.points = new Points();
+        this.hints = new Hint(this.lettersUl, this.solutionUl);
+        this.newGameBtn.addEventListener("click", this.gameReset.bind(this));
+    }
+
+    clearFields() {
+        // console.log(this.lettersUl)
         this.wordsBuilder.resetUl(this.lettersUl);  
         this.wordsBuilder.resetUl(this.solutionUl); 
-
+        
+    }
+    gameReset(){
+        // console.log(this.lettersUl)
+        this.clearFields();
         for (let i = 0; i < 5; i++){
             this.newLi = document.createElement("li");
             this.newLi.innerText = "";
@@ -320,38 +312,55 @@ class NewGame {
                 this.newLi.innerText = "";
                 this.solutionUl.appendChild(this.newLi);
         }
-
+        this.points.resetPoinst()
        
-        medal.src = "img/score/medal.svg";
-        mainImg.src = "img/words/sowa.svg";
-        }
+       
+    }
 
+    checkCorrectLetter(word, caption){
+        const captionTxt = caption
+        const wordRandomLetters = this.wordsBuilder.mixLetters(word).join("");
+        const newPermut= new Permut(wordRandomLetters);
+        const mixedWord = newPermut.mixedword;
+        const newImg = this.wordsBuilder.getLetter(mixedWord, this.lettersUl);
+        const newInput = this.wordsBuilder.getInput(word, this.solutionUl);
+
+        
+        this.letterBtns = this.wordsBuilder.lettersUl.querySelectorAll("li");
+        this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
+        
+        buttonNbr = 1;
+
+        for (let i = 0; i < this.letterBtns.length; i++) { this.letterBtns[i].addEventListener("click", () => {    
+                 
+            this.button = this.letterBtns[i];
+
+               
+            this.solution =  this.solutionUl;
+            this.solutionField = this.solution.querySelector(`li:nth-child(${buttonNbr})`);
+            const buttonLetter = this.button.innerText;
+            const solutionLetter = this.solutionField.getAttribute("data-letter");
+
+            if (solutionLetter.toUpperCase() === buttonLetter) {
+                const butttonDisable = new ButtnDisabled;
+                butttonDisable.disable(this.button);
+                butttonDisable.addLetter(this.solutionField, buttonLetter);
+
+                buttonNbr++;
+                solutionNbr++;
+                const newsun = new UpDownSun;
+                newsun.updown();
+            }
+                       
+            if (this.solutionField.getAttribute("data-nbr") == this.solutionBtns.length) {
+            captionTxt.innerText = "Brawo! Wyraz gotowy!";
+           
+            this.points.addPoint()                       
+            }
+            this.points.giveMedal()
+            })
+        }
+    }
 }
 
 const newGame = new NewGame
-
-
-class Hint {
-    constructor() {
-        this.hintBtn = document.getElementById("hint");
-        this.nbr = 0;
-        this.hintBtn.addEventListener("click touchstart", this.getHint.bind(this));
-        
-    }
-
-    getHint() {
-        this.wordsBuilder = new WordsBuilder();  
-        this.solution = this.wordsBuilder.solutionUl;
-        this.solutionBtns = this.wordsBuilder.solutionUl.querySelectorAll("li");
-        this.solutionBtn = this.solutionBtns[this.nbr];
-        this.solutionBtn.innerText = this.solutionBtn.getAttribute("data-letter");
-        this.nbr++;
-        return this.nbr
-    }
-    
-}
-
-const hints = new Hint
-
-console.log(hints.nbr)
-

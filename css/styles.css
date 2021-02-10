@@ -384,6 +384,7 @@ main .board {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  z-index: 1;
 }
 
 main .board .mainImg {
@@ -606,16 +607,16 @@ main .navigation .footer a {
 }
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  aside {
+  main .navigation .footer a aside {
     min-height: 768px;
   }
-  main {
+  main .navigation .footer a main {
     margin-left: 38px;
     min-width: 768px;
     max-width: 1024px;
     min-height: 768px;
   }
-  main .score {
+  main .navigation .footer a main .score {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row no-wrap;
@@ -623,10 +624,10 @@ main .navigation .footer a {
     -ms-flex-preferred-size: 25%;
         flex-basis: 25%;
   }
-  main .score ul {
+  main .navigation .footer a main .score ul {
     width: 50%;
   }
-  main .board .solution ul li {
+  main .navigation .footer a main .board .solution ul li {
     margin: 0 5px;
     height: 80px;
     width: 80px;
@@ -636,7 +637,7 @@ main .navigation .footer a {
     text-align: center;
     line-height: 80px;
   }
-  main .board .letters ul li {
+  main .navigation .footer a main .board .letters ul li {
     margin: 0 5px;
     height: 70px;
     width: 70px;
@@ -646,17 +647,17 @@ main .navigation .footer a {
     text-align: center;
     line-height: 70px;
   }
-  main .navigation div p {
+  main .navigation .footer a main .navigation div p {
     font-size: 2.5em;
   }
-  main .navigation .sun img {
+  main .navigation .footer a main .navigation .sun img {
     width: 70%;
     max-width: 250px;
   }
 }
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  aside {
+  main .navigation .footer a aside {
     top: -110px;
     left: 0;
     width: 100%;
@@ -665,7 +666,7 @@ main .navigation .footer a {
     min-height: auto;
     z-index: 2;
   }
-  aside .alphabet {
+  main .navigation .footer a aside .alphabet {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
@@ -674,7 +675,7 @@ main .navigation .footer a {
     height: 100%;
     padding: 5 0;
   }
-  aside .alphabet li {
+  main .navigation .footer a aside .alphabet li {
     cursor: pointer;
     -ms-flex-preferred-size: 8%;
         flex-basis: 8%;
@@ -686,27 +687,27 @@ main .navigation .footer a {
     text-align: center;
     line-height: calc(100vw / 12);
   }
-  aside .arrow {
+  main .navigation .footer a aside .arrow {
     position: absolute;
     top: 110px;
     left: 0;
     height: 40px;
     width: 100%;
   }
-  aside .arrow::before {
+  main .navigation .footer a aside .arrow::before {
     position: absolute;
     top: 0;
     left: 0;
     height: 2px;
     width: 100%;
   }
-  aside .arrow div i.fa-chevron-down {
+  main .navigation .footer a aside .arrow div i.fa-chevron-down {
     display: inline;
   }
-  aside .arrow div i.fa-chevron-right {
+  main .navigation .footer a aside .arrow div i.fa-chevron-right {
     display: none;
   }
-  main {
+  main .navigation .footer a main {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-flow: column wrap;
@@ -715,13 +716,13 @@ main .navigation .footer a {
     max-width: 1024px;
     min-height: 768px;
   }
-  main section {
+  main .navigation .footer a main section {
     -ms-flex-preferred-size: 20%;
         flex-basis: 20%;
     height: 20%;
     width: 100%;
   }
-  main .score {
+  main .navigation .footer a main .score {
     -ms-flex-preferred-size: 20%;
         flex-basis: 20%;
     height: 20%;
@@ -739,7 +740,7 @@ main .navigation .footer a {
             align-items: flex-end;
     position: relative;
   }
-  main .score ul {
+  main .navigation .footer a main .score ul {
     margin-top: 0;
     -ms-flex-preferred-size: 70%;
         flex-basis: 70%;
@@ -749,7 +750,7 @@ main .navigation .footer a {
         -ms-flex-order: 1;
             order: 1;
   }
-  main .score div:nth-of-type(1) {
+  main .navigation .footer a main .score div:nth-of-type(1) {
     -ms-flex-preferred-size: 60%;
         flex-basis: 60%;
     width: 70%;
@@ -762,7 +763,7 @@ main .navigation .footer a {
     top: 30%;
     line-height: 60px;
   }
-  main .score .medal {
+  main .navigation .footer a main .score .medal {
     min-height: 150px;
     -ms-flex-preferred-size: 30%;
         flex-basis: 30%;
@@ -774,20 +775,20 @@ main .navigation .footer a {
         -ms-flex-align: center;
             align-items: center;
   }
-  main .score .medal img {
+  main .navigation .footer a main .score .medal img {
     width: 100%;
     min-width: 150px;
     max-width: 230px;
   }
-  main .board {
+  main .navigation .footer a main .board {
     -ms-flex-preferred-size: 60%;
         flex-basis: 60%;
     width: 100%;
   }
-  main .board .solution, main .board .letters {
+  main .navigation .footer a main .board .solution, main .navigation .footer a main .board .letters {
     height: 100px;
   }
-  main .board .solution ul li {
+  main .navigation .footer a main .board .solution ul li {
     min-height: 70px;
     height: 70px;
     min-width: 70px;
@@ -798,7 +799,7 @@ main .navigation .footer a {
     text-align: center;
     line-height: 70px;
   }
-  main .board .letters ul li {
+  main .navigation .footer a main .board .letters ul li {
     height: 60px;
     min-height: 60px;
     width: 60px;
@@ -809,7 +810,7 @@ main .navigation .footer a {
     text-align: center;
     line-height: 60px;
   }
-  main .navigation {
+  main .navigation .footer a main .navigation {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
@@ -817,7 +818,7 @@ main .navigation .footer a {
     padding-top: 0px;
     position: relative;
   }
-  main .navigation div:not(.button):first-child, main .navigation div:not(.button):nth-child(2) {
+  main .navigation .footer a main .navigation div:not(.button):first-child, main .navigation .footer a main .navigation div:not(.button):nth-child(2) {
     -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
     height: 50%;
@@ -825,21 +826,21 @@ main .navigation .footer a {
         -ms-flex-pack: center;
             justify-content: center;
   }
-  main .navigation div:not(.button):first-child p, main .navigation div:not(.button):nth-child(2) p {
+  main .navigation .footer a main .navigation div:not(.button):first-child p, main .navigation .footer a main .navigation div:not(.button):nth-child(2) p {
     font-size: 2.2em;
     max-width: 150px;
   }
-  main .navigation div:not(.button):first-child .button, main .navigation div:not(.button):nth-child(2) .button {
+  main .navigation .footer a main .navigation div:not(.button):first-child .button, main .navigation .footer a main .navigation div:not(.button):nth-child(2) .button {
     cursor: pointer;
     height: 60px;
     width: 60px;
   }
-  main .navigation div:not(.button):first-child {
+  main .navigation .footer a main .navigation div:not(.button):first-child {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
   }
-  main .navigation div:not(.button):nth-child(2) {
+  main .navigation .footer a main .navigation div:not(.button):nth-child(2) {
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
             order: 3;
@@ -848,7 +849,7 @@ main .navigation .footer a {
     left: 0;
     width: 50%;
   }
-  main .navigation .sun {
+  main .navigation .footer a main .navigation .sun {
     -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
     width: 50%;
@@ -860,12 +861,12 @@ main .navigation .footer a {
         -ms-flex-order: 2;
             order: 2;
   }
-  main .navigation .sun img {
+  main .navigation .footer a main .navigation .sun img {
     margin-top: 0;
     width: 70%;
     max-width: 150px;
   }
-  main .navigation .footer {
+  main .navigation .footer a main .navigation .footer {
     height: 10%;
     width: 50%;
     -webkit-box-ordinal-group: 4;
