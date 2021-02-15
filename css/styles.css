@@ -585,13 +585,13 @@ main .navigation .sun img {
 }
 
 main .navigation .sun img:nth-of-type(2) {
-  -webkit-animation: rotate-sun 30s linear infinite;
-          animation: rotate-sun 30s linear infinite;
+  -webkit-animation: rotate-sun 60s linear infinite;
+          animation: rotate-sun 60s linear infinite;
 }
 
 main .navigation .sun img:first-child {
-  -webkit-animation: rotate-sacle-sun 30s linear infinite;
-          animation: rotate-sacle-sun 30s linear infinite;
+  -webkit-animation: rotate-sacle-sun 60s linear infinite;
+          animation: rotate-sacle-sun 60s linear infinite;
 }
 
 main .navigation .footer {
