@@ -193,6 +193,7 @@ class Points {
     addPoint() {
         hearts[pointNumber].style.color = "#EB4D4B";
         pointNumber++
+        console.log(pointNumber)
     }
 
 
@@ -206,6 +207,7 @@ class Points {
         if (pointNumber === 6) {
          
             medal.src = `img/score/${this.medalList[this.rndmNbr]}`
+            pointNumber = 0
         }
     }
 
