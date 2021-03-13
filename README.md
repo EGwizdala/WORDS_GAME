@@ -1,5 +1,5 @@
 # WORDS GAME
-I is a simle game helping children to learn how to spell words. Age group 5-7 years.
+It is a simple game that helps children to learn how to spell words. Age group 5-7 years.
 
 ## Table of contents
 * [General info](#general-info)
@@ -12,7 +12,7 @@ I is a simle game helping children to learn how to spell words. Age group 5-7 ye
 * [Contact](#contact)
 
 ## General info
-The game was written for my daughter. I also wanted to train object oriented programming.
+The game was written for my daughter. I also wanted to train object oriented programming. Also I wanted to practise keyframes, media queries and sass preprocessor. All animations are my authorship.
 
 You start the game by selecting a letter from the alphabet table. When an image appears, your goal is to create the word that that image represents. You make a word from mixed up letters with two randomly added letters. When you finish the task, you will earn a point. After collecting six points, a reward will appear. 
 
@@ -34,7 +34,7 @@ https://github.com/EGwizdala/WORDS_GAME
 To-do list:
 * Add a hint button, that gives one letter of the word.
 * Make more words to gues.
-* Clean up the code, put classes to seperate files. 
+* Clean up the code, put classes to separate files. 
 
 ## Status
 Project is: _in progress_
