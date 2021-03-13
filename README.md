@@ -16,7 +16,7 @@ The game was written for my daughter. I also wanted to train object oriented pro
 
 You start the game by selecting a letter from the alphabet table. When an image appears, your goal is to create the word that that image represents. You make a word from mixed up letters with two randomly added letters. When you finish the task, you will earn a point. After collecting six points, a reward will appear. 
 ## Screenshots
-![Example screenshot](/img/GameScreen.png)
+![GameScreen](/img/GameScreen.png)
 
 ## Technologies
 * HTML5
