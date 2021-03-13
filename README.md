@@ -15,7 +15,8 @@ I is a simle game helping children to learn how to spell words. Age group 5-7 ye
 The game was written for my daughter. I also wanted to train object oriented programming.
 
 You start the game by selecting a letter from the alphabet table. When an image appears, your goal is to create the word that that image represents. You make a word from mixed up letters with two randomly added letters. When you finish the task, you will earn a point. After collecting six points, a reward will appear. 
-## Screenshots
+
+## Layout
 ![GameScreen](/img/GameScreen.png)
 
 ## Technologies
