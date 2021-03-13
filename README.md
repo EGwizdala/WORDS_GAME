@@ -21,7 +21,7 @@ You start the game by selecting a letter from the alphabet table. When an image 
 
 ## Technologies
 * HTML5
-* SASS/CSS (media query, keyframes, mixins, variables in use)
+* SASS/CSS (flexbox, media query, keyframes, mixins, variables in use)
 * JAVA SCRIPT
 * Written in Visual Studio Code
 
