@@ -25,8 +25,8 @@ You start the game by selecting a letter from the alphabet table. When an image 
 * JAVA SCRIPT
 
 ## Setup
-Link to finished game.
-egwizdala.github.io/words_game/
+Link to finished game:
+https://github.com/EGwizdala/WORDS_GAME
 
 ## Features
 * The game is responsive to large mobile devices such as tablets.
